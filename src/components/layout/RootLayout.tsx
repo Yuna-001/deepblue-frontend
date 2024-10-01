@@ -21,8 +21,8 @@ const RootLayout: FC = () => {
   }, [isRevisit]);
 
   return (
-    <div className="w-1wh h-lvh bg-navy-800 overflow-hidden flex justify-center items-center">
-      <main className="w-full max-w-max_width h-full max-h-max_height bg-white overflow-y-scroll">
+    <div className="w-1wh h-lvh  bg-white overflow-hidden flex justify-center items-center">
+      <main className="w-full max-w-max_width h-full max-h-max_height bg-navy-800 overflow-y-scroll">
         {isRevisit ? <Outlet /> : <SplashPage />}
       </main>
     </div>
