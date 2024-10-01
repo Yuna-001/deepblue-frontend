@@ -1,7 +1,8 @@
 import { FC } from "react";
+import splashImg from "../assets/images/splash.png";
 
 const SplashPage: FC = () => {
-  return <div className="bg-emerald-700 w-full h-full"></div>;
+  return <img src={splashImg} className="h-full w-full" />;
 };
 
 export default SplashPage;
