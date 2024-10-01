@@ -5,6 +5,9 @@ export default {
   // width, height 관련은 나중에 수정 필요
   theme: {
     extend: {
+      backgroundImage: {
+        auth: "url('./assets/images/auth-page-bg.png')",
+      },
       width: {
         web_basic: "360px",
       },
