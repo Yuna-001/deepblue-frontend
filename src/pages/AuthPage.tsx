@@ -16,15 +16,15 @@ const AuthPage: FC = () => {
   return (
     <div className="h-full w-full bg-auth -z-10">
       <PageLayout>
-        <h1 className="absolute top-[140px]">
+        <h1 className="absolute top-[140px] title1 text-navy-100">
           당신의 마음,
           <br /> 딥블루와 함께
           <br /> 더 깊이 알아가세요.
         </h1>
-        <Button onClick={handleLogin} additionalClasses="bg-navy-100">
+        <Button onClick={handleLogin} additionalClasses="h-12 bg-navy-100">
           <div className="flex flex-row justify-center gap-2">
             <img src={googleLogoImg} />
-            <div>Google 계정으로 가입</div>
+            <div className="text-navy-800 title4">Google 계정으로 가입</div>
           </div>
         </Button>
       </PageLayout>
