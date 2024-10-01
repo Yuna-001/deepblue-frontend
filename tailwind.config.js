@@ -2,19 +2,26 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 
+  // width, height 관련은 나중에 수정 필요
   theme: {
     extend: {
       width: {
-        basic: "360px",
+        web_basic: "360px",
       },
       height: {
-        basic: "640px",
+        web_basic: "640px",
       },
       minWidth: {
-        basic: "360px",
+        min_width: "360px",
       },
       minHeight: {
-        basic: "640px",
+        min_height: "640px",
+      },
+      maxWidth: {
+        max_width: "360px",
+      },
+      maxHeight: {
+        max_height: "640px",
       },
       colors: {
         navy: {
