@@ -4,14 +4,14 @@ type User = {
   nickname: string;
   score: number;
   setNickname: (input: string) => void;
-  setScore: (input: number) => void;
+  increaseScore: (input: number) => void;
 };
 
 const useUserStore = create<User>((set) => ({
   nickname: "",
   score: 0,
-  setNickname: (inputNickname) => set({ nickname: inputNickname }),
-  setScore: (inputScore) => set({ score: inputScore }),
+  setNickname: (nickname) => set({ nickname }),
+  increaseScore: (points) => set((state) => ({ score: state.score + points })),
 }));
 
 export default useUserStore;
