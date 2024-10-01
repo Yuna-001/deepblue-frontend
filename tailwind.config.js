@@ -5,6 +5,9 @@ export default {
   // width, height 관련은 나중에 수정 필요
   theme: {
     extend: {
+      fontFamily: {
+        pretendard: ["Pretendard", "sans-serif"],
+      },
       backgroundImage: {
         auth: "url('./assets/images/auth-page-bg.png')",
       },
