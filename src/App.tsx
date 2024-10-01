@@ -4,11 +4,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import GoogleLoginButton from "./components/auth/GoogleLoginButton";
 import CallbackPage from "./pages/CallbackPage";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import RootLayout from "./components/layout/RootLayout";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <RootLayout />,
       children: [
         { index: true, element: <h1>ONBOARDING</h1> },
         {
