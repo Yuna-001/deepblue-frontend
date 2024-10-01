@@ -5,6 +5,7 @@ import GoogleLoginButton from "./components/auth/GoogleLoginButton";
 import CallbackPage from "./pages/CallbackPage";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import RootLayout from "./components/layout/RootLayout";
+import QuestionPage from "./pages/QuestionPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,7 +25,7 @@ function App() {
           path: "tutorial",
           children: [
             { index: true, element: <h1>FISRT TUTORIAL</h1> },
-            { path: "questions", element: <h1>Q&A</h1> },
+            { path: "questions", element: <QuestionPage /> },
             { path: "nickname", element: <h1>NICKNAME SETTING</h1> },
             { path: "guide", element: <h1>GUIDE</h1> },
           ],
