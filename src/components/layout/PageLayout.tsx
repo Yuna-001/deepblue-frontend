@@ -1,7 +1,17 @@
 import { FC, ReactNode } from "react";
 
-const PageLayout: FC<{ children: ReactNode }> = ({ children }) => {
-  return <div className="h-full w-11/12 mx-auto relative">{children}</div>;
+import Header from "./Header";
+
+const PageLayout: FC<{ children: ReactNode; withBackArrow?: boolean }> = ({
+  children,
+  withBackArrow = false,
+}) => {
+  return (
+    <div className="h-full w-11/12 mx-auto relative">
+      <Header withBackArrow={withBackArrow} />
+      {children}
+    </div>
+  );
 };
 
 export default PageLayout;
