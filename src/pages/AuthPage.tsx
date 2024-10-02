@@ -18,8 +18,8 @@ const AuthPage: FC = () => {
       <PageLayout>
         <h1 className="absolute top-[140px] title1 text-navy-100">
           당신의 마음,
-          <br /> 딥블루와 함께
-          <br /> 더 깊이 알아가세요.
+          <br /> 딥블루와 함께 더 깊이
+          <br /> 알아가세요.
         </h1>
         <Button onClick={handleLogin} isLoginButton>
           <div className="flex flex-row justify-center gap-2">
