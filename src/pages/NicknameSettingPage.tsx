@@ -4,7 +4,7 @@ import PageLayout from "../components/layout/PageLayout";
 import Button from "../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 
-const NicknamePage: FC = () => {
+const NicknameSettingPage: FC = () => {
   const [nickname, setNickname] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -89,4 +89,4 @@ const NicknamePage: FC = () => {
   );
 };
 
-export default NicknamePage;
+export default NicknameSettingPage;
