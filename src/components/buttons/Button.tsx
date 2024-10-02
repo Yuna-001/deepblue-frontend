@@ -1,22 +1,30 @@
 import { FC, ReactNode } from "react";
 
-const Button: FC<{
+type ButtonProps = {
   onClick: () => void;
   children: ReactNode;
-  additionalClasses?: string;
+  isLoginButton?: boolean;
   disabled?: boolean;
-}> = ({ onClick, children, additionalClasses = "", disabled = false }) => {
-  let classes = "w-full text-center p-2 absolute bottom-4 rounded-lg" + " ";
+};
 
-  if (additionalClasses) {
-    // 입력받은 클래스가 있는 경우
-    classes += additionalClasses;
+const Button: FC<ButtonProps> = ({
+  onClick,
+  children,
+  isLoginButton = false,
+  disabled = false,
+}) => {
+  let classes =
+    "w-full h-12 text-center p-2 absolute bottom-4 rounded-lg title4" + " ";
+
+  if (isLoginButton) {
+    // 로그인 버튼인 경우
+    classes += "bg-navy-100 text-navy-800";
   } else if (!disabled) {
-    // 입력받은 클래스가 없고 활성 상태일 경우
-    classes += "bg-gradient-custom ";
+    // 활성 상태일 경우
+    classes += "bg-gradient-custom text-navy-800";
   } else {
-    // 입력받은 클래스가 없고 비활성 상태일 경우
-    classes += "";
+    // 비활성 상태일 경우
+    classes += "bg-navy-700 text-navy-500";
   }
 
   return (
