@@ -6,6 +6,7 @@ import RootLayout from "./components/layout/RootLayout";
 import QuestionPage from "./pages/QuestionPage";
 import AuthPage from "./pages/AuthPage";
 import CallbackPage from "./pages/CallbackPage";
+import NicknamePage from "./pages/NicknamePage";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,7 +27,7 @@ function App() {
           children: [
             { index: true, element: <h1>FISRT TUTORIAL</h1> },
             { path: "questions", element: <QuestionPage /> },
-            { path: "nickname", element: <h1>NICKNAME SETTING</h1> },
+            { path: "nickname", element: <NicknamePage /> },
             { path: "guide", element: <h1>GUIDE</h1> },
           ],
         },
