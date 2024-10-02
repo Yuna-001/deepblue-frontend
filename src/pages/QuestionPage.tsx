@@ -2,27 +2,29 @@ import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import questionsData from "../assets/questions.json";
-import useHikikomoriScore from "../store/hikikomoriScore";
 import Answer from "../components/buttons/Answer";
 import PageLayout from "../components/layout/PageLayout";
 
 const QuestionPage: FC = () => {
   const navigate = useNavigate();
 
-  const increaseScore = useHikikomoriScore((state) => state.increaseScore);
-
   const [questionIndex, setQuestionIndex] = useState<number>(0);
+  const [hikikomoriScore, setHikikomoriScore] = useState<number>(0);
+
   const { question, answers } = questionsData[questionIndex];
 
   const handelAnswerClick = (point: number) => {
-    increaseScore(point);
+    setHikikomoriScore((pervScore) => pervScore + point);
 
     if (questionIndex === questionsData.length - 1) {
-      // 백엔드로 전송
-      navigate("/tutorial/nickname-setting");
-    }
+      const updatedScore = hikikomoriScore + point;
 
-    setQuestionIndex((prevIndex) => prevIndex + 1);
+      // updatedScore를 백엔드로 전송
+
+      navigate("/tutorial/nickname-setting");
+    } else {
+      setQuestionIndex((prevIndex) => prevIndex + 1);
+    }
   };
 
   return (
