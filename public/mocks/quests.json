@@ -1,26 +1,12 @@
 [
   {
+    "id": 1,
     "title": "퀘스트1",
     "point": 10
   },
-  {
-    "title": "퀘스트2",
-    "point": 20
-  },
-  {
-    "title": "퀘스트3",
-    "point": 30
-  },
-  {
-    "title": "퀘스트4",
-    "point": 40
-  },
-  {
-    "title": "퀘스트5",
-    "point": 50
-  },
-  {
-    "title": "퀘스트6",
-    "point": 60
-  }
+  { "id": 2, "title": "퀘스트2", "point": 20 },
+  { "id": 3, "title": "퀘스트3", "point": 30 },
+  { "id": 4, "title": "퀘스트4", "point": 40 },
+  { "id": 5, "title": "퀘스트5", "point": 50 },
+  { "id": 6, "title": "퀘스트6", "point": 60 }
 ]
