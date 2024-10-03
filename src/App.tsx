@@ -34,13 +34,13 @@ function App() {
           ],
         },
         {
-          path: "home",
+          path: "main",
           element: <MainPageLayout />,
           children: [
-            { index: true, element: <HomePage /> },
+            { path: "home", element: <HomePage /> },
             { path: "dashboard", element: <h1>DASHBOARD</h1> },
             { path: "ranking", element: <h1>RANKING</h1> },
-            { path: "community", element: <h1>COMMUNITY</h1> },
+            { path: "communication", element: <h1>COMMUNITY</h1> },
           ],
         },
       ],

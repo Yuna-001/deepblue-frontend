@@ -29,11 +29,11 @@ const NicknameSettingPage: FC = () => {
 
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     // 백엔드로 전송
 
     // 우선 홈 화면으로 이동
-    navigate("/home");
+    navigate("/main/home");
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -66,7 +66,10 @@ const NicknameSettingPage: FC = () => {
 
   return (
     <PageLayout withBackArrow>
-      <form className="h-full mb-36 flex flex-col justify-center">
+      <form
+        className="h-full mb-36 flex flex-col justify-center"
+        onSubmit={handleSubmit}
+      >
         <label className="title3 text-navy-100 mb-10" htmlFor="nickname">
           '폴라'에게
           <br />
@@ -82,7 +85,7 @@ const NicknameSettingPage: FC = () => {
         />
         <div className={messageClasses}>{message || ""}</div>
       </form>
-      <Button onClick={handleClick} disabled={disabled}>
+      <Button onClick={handleSubmit} disabled={disabled}>
         다음
       </Button>
     </PageLayout>
