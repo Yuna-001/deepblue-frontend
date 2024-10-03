@@ -21,7 +21,7 @@ const AuthPage: FC = () => {
           <br /> 딥블루와 함께 더 깊이
           <br /> 알아가세요.
         </h1>
-        <Button onClick={handleLogin} isLoginButton>
+        <Button onClick={handleLogin} isLoginButton isOnboarding>
           <div className="flex flex-row justify-center gap-2">
             <img src={googleLogoImg} />
             <div>Google 계정으로 가입</div>

@@ -85,7 +85,7 @@ const NicknameSettingPage: FC = () => {
         />
         <div className={messageClasses}>{message || ""}</div>
       </form>
-      <Button onClick={handleSubmit} disabled={disabled}>
+      <Button onClick={handleSubmit} disabled={disabled} isOnboarding>
         다음
       </Button>
     </PageLayout>

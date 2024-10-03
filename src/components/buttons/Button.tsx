@@ -4,6 +4,7 @@ type ButtonProps = {
   onClick: () => void;
   children: ReactNode;
   isLoginButton?: boolean;
+  isOnboarding?: boolean;
   disabled?: boolean;
 };
 
@@ -11,10 +12,14 @@ const Button: FC<ButtonProps> = ({
   onClick,
   children,
   isLoginButton = false,
+  isOnboarding = false,
   disabled = false,
 }) => {
-  let classes =
-    "w-full h-12 text-center p-2 absolute bottom-4 rounded-lg title4" + " ";
+  let classes = "w-full h-12 text-center p-2 rounded-lg title4 ";
+
+  if (isOnboarding) {
+    classes += "absolute bottom-4 ";
+  }
 
   if (isLoginButton) {
     // 로그인 버튼인 경우
