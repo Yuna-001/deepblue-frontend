@@ -21,7 +21,7 @@ const USERS = [
   },
   {
     ranking: 3,
-    nickname: "닉네임",
+    nickname: "닉네임닉네임닉네임닉네임닉네임",
     level: 5,
     score: 1000,
   },
@@ -51,55 +51,55 @@ const USERS = [
   },
   {
     ranking: 8,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ9",
     level: 5,
     score: 1000,
   },
   {
     ranking: 11,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ8",
     level: 5,
     score: 1000,
   },
   {
     ranking: 55,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ7",
     level: 5,
     score: 1000,
   },
   {
     ranking: 80,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ6",
     level: 5,
     score: 1000,
   },
   {
     ranking: 81,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ5",
     level: 5,
     score: 1000,
   },
   {
     ranking: 82,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ4",
     level: 5,
     score: 1000,
   },
   {
     ranking: 83,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ3",
     level: 5,
     score: 1000,
   },
   {
     ranking: 85,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ2",
     level: 100,
     score: 1000,
   },
   {
     ranking: 100,
-    nickname: "ㅠㅠㅠㅠㅠㅠ",
+    nickname: "ㅠㅠㅠㅠㅠㅠ1",
     level: 5,
     score: 100,
   },
@@ -127,8 +127,14 @@ const RankingPage: FC = () => {
         <Button onClick={handleGoHome}>남은 퀘스트 하러 가기</Button>
 
         <ul className="w-full border border-navy-700 rounded-lg py-6 px-2 flex flex-col gap-5 h-full overflow-y-auto scrollbar-hidden">
-          {USERS.map((user) => (
-            <UserInRanking {...user} />
+          {USERS.map(({ ranking, nickname, level, score }) => (
+            <UserInRanking
+              key={nickname}
+              nickname={nickname}
+              ranking={ranking}
+              level={level}
+              score={score}
+            />
           ))}
         </ul>
       </div>

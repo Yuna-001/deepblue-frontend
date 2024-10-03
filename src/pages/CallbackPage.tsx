@@ -7,14 +7,14 @@ const CallbackPage: FC = () => {
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  const code = searchParams.get("token");
-
-  if (!code) navigate("/");
+  const code = searchParams.get("code");
 
   const { data: user, isLoading } = useQuery({
     queryFn: () => fetchUser(code as string),
     queryKey: ["user-auth"],
   });
+
+  if (!code) navigate("/auth");
 
   useEffect(() => {
     if (!isLoading && user) {
@@ -23,14 +23,14 @@ const CallbackPage: FC = () => {
       localStorage.setItem("accessToken", accessToken);
 
       if (isExistingMember) {
-        navigate("/home");
+        navigate("/main/home");
       } else {
-        navigate("/tutorial");
+        navigate("/tutorial/questions");
       }
     }
-  }, [isLoading, navigate, user]);
+  }, [isLoading, navigate, user, code]);
 
-  return <h1>Callback</h1>;
+  return <></>;
 };
 
 export default CallbackPage;
