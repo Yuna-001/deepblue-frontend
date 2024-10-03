@@ -5,7 +5,7 @@ import MainNavigation from "./MainNavigation";
 const MainPageLayout: FC = () => {
   return (
     <>
-      <div className="h-full w-full mx-auto px-5 pb-14">
+      <div className="h-full w-full mx-auto px-4 pb-14">
         <Outlet />
       </div>
       <MainNavigation />
