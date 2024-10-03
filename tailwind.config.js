@@ -54,6 +54,9 @@ export default {
         },
         error_color: "#FF5602",
       },
+      boxShadow: {
+        main_nav: "0px -8px 8px 0px #337FC71A, 0px -4px 4px 0px #337FC71A",
+      },
     },
     backgroundImage: {
       "gradient-custom": "linear-gradient(to right,#4D9DBC,#60C4EB, #9FDCF3)",

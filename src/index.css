@@ -102,3 +102,12 @@
   line-height: 16.8px;
   letter-spacing: -0.02em;
 }
+
+.nav_text {
+  font-family: Pretendard;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
