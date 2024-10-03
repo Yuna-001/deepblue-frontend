@@ -14,7 +14,7 @@ const AuthPage: FC = () => {
   };
 
   return (
-    <div className="h-full w-full bg-auth -z-10">
+    <div className="h-full w-full bg-auth bg-cover bg-no-repeat">
       <PageLayout>
         <h1 className="absolute top-[140px] title1 text-navy-100">
           당신의 마음,

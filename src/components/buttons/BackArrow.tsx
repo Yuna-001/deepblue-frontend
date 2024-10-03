@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import backArrowImg from "../../assets/images/back-arrow.png";
+import backArrowImg from "../../assets/images/back-arrow.svg";
 
 const BackArrow: FC = () => {
   const handleGoBack = () => {
