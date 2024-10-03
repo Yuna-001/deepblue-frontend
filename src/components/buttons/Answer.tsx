@@ -7,7 +7,7 @@ const Answer: FC<{ text: string; onClick: () => void }> = ({
   return (
     <li
       onClick={onClick}
-      className="h-16 w-full py-5 px-6 bg-navy-800 body1 text-navy-100 outline-none rounded-lg border border-navy-700"
+      className="h-16 w-full py-5 px-6 cursor-pointer bg-navy-800 body1 text-navy-100 outline-none rounded-lg border border-navy-700"
     >
       {text}
     </li>

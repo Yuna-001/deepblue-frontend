@@ -1,0 +1,26 @@
+<svg viewBox="0 0 360 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_185_242)">
+<rect width="360" height="640" transform="translate(360 640) rotate(-180)" fill="#143350"/>
+<rect x="360" y="200" width="360" height="200" transform="rotate(-180 360 200)" fill="url(#paint0_linear_185_242)"/>
+<path d="M389.053 254.656C402.065 249.71 412.972 233.785 416.799 226.441L561.991 582.258L58.7236 756.838L-76.4542 450.217C-68.5002 445.024 -44.5669 430.284 -12.4654 412.873C27.6615 391.11 6.87441 345.717 68.6879 315.709C130.501 285.702 193.426 311.356 227.041 298.577C260.655 285.799 262.857 252.416 305.146 236.34C347.434 220.263 372.788 260.839 389.053 254.656Z" fill="url(#paint1_radial_185_242)"/>
+<path d="M421.061 357.484C434.073 352.537 444.98 336.612 448.807 329.268L594 685.085L90.7322 859.665L-44.4455 553.045C-36.4916 547.851 -12.5583 533.112 19.5433 515.701C59.6701 493.937 41.7534 440.933 103.567 410.925C165.38 380.917 225.435 414.183 259.049 401.405C292.664 388.626 294.865 355.243 337.154 339.167C379.443 323.091 404.796 363.667 421.061 357.484Z" fill="url(#paint2_radial_185_242)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_185_242" x1="540" y1="200" x2="540" y2="400" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0A1928" stop-opacity="0"/>
+<stop offset="1" stop-color="#0A1928"/>
+</linearGradient>
+<radialGradient id="paint1_radial_185_242" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(231.219 485.856) rotate(-124.321) scale(243.379 322.239)">
+<stop offset="0.719336" stop-color="#1F4C77"/>
+<stop offset="1" stop-color="#2C5B87"/>
+</radialGradient>
+<radialGradient id="paint2_radial_185_242" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(253.558 612.216) rotate(-121.599) scale(247.988 810.464)">
+<stop stop-color="#17426A"/>
+<stop offset="0.65" stop-color="#1E5A92"/>
+<stop offset="1" stop-color="#2F71AF"/>
+</radialGradient>
+<clipPath id="clip0_185_242">
+<rect width="360" height="640" fill="white" transform="translate(360 640) rotate(-180)"/>
+</clipPath>
+</defs>
+</svg>

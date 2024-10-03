@@ -7,6 +7,8 @@ import QuestionPage from "./pages/QuestionPage";
 import AuthPage from "./pages/AuthPage";
 import CallbackPage from "./pages/CallbackPage";
 import NicknameSettingPage from "./pages/NicknameSettingPage";
+import HomePage from "./pages/HomePage";
+import MainPageLayout from "./components/layout/MainPageLayout";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,8 +35,9 @@ function App() {
         },
         {
           path: "home",
+          element: <MainPageLayout />,
           children: [
-            { index: true, element: <h1>HOME</h1> },
+            { index: true, element: <HomePage /> },
             { path: "dashboard", element: <h1>DASHBOARD</h1> },
             { path: "ranking", element: <h1>RANKING</h1> },
             { path: "community", element: <h1>COMMUNITY</h1> },

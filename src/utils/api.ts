@@ -7,7 +7,7 @@ export const fetchUser = async (code: string) => {
   //   const isExistingMember = res.data.isExistingMember;
 
   // mock 데이터
-  const res = await get("/mocks/auth/mockLoginData.json");
+  const res = await get("/mocks/mockLoginData.json");
   // res.data[0]은 기존 회원
   // res.data[1]은 새로운 회원
   return res.data[1];

@@ -5,13 +5,13 @@
 @tailwind utilities;
 
 @layer components {
-  main::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera에서 스크롤 바 숨기기 */
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera에서 스크롤바 숨기기 */
   }
 
-  main {
-    -ms-overflow-style: none; /* IE 및 Edge에서 스크롤 바 숨기기 */
-    scrollbar-width: none; /* Firefox에서 스크롤 바 숨기기 */
+  .scrollbar-hidden {
+    -ms-overflow-style: none; /* IE 및 Edge에서 스크롤바 숨기기 */
+    scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
   }
 }
 

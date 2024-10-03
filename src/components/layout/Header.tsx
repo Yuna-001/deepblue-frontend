@@ -6,7 +6,7 @@ const Header: FC<{ children?: ReactNode; withBackArrow?: boolean }> = ({
   withBackArrow = false,
 }) => {
   return (
-    <header className="h-14 w-full flex flex-row align-middle justify-between">
+    <header className="h-14 w-full flex flex-row items-center justify-between">
       {withBackArrow && <BackArrow />}
       {children}
     </header>
