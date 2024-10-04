@@ -7,7 +7,7 @@ const TotalPoint: FC = () => {
   const userTotalPoint = 1000000;
 
   return (
-    <div className="bg-sky_blue-primary-800 w-30 h-8 rounded-3xl py-1 px-2 flex justify-center text-navy-100">
+    <div className="bg-sky_blue-800 w-30 h-8 rounded-3xl py-1 px-2 flex justify-center text-navy-100">
       <Point point={userTotalPoint} />
     </div>
   );

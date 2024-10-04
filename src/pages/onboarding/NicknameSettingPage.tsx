@@ -23,8 +23,8 @@ const NicknameSettingPage: FC = () => {
     messageClasses += "text-error_color";
   } else {
     // 통과
-    inputFieldClasses += "border-point_color-emerald";
-    messageClasses += "text-point_color-emerald";
+    inputFieldClasses += "border-point_color-mint";
+    messageClasses += "text-point_color-mint";
   }
 
   const navigate = useNavigate();
