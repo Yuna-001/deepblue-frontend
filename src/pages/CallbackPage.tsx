@@ -25,7 +25,7 @@ const CallbackPage: FC = () => {
       if (isExistingMember) {
         navigate("/main/home");
       } else {
-        navigate("/tutorial/questions");
+        navigate("/tutorial");
       }
     }
   }, [isLoading, navigate, user, code]);

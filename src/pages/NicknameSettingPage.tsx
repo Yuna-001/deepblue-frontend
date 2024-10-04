@@ -32,8 +32,7 @@ const NicknameSettingPage: FC = () => {
   const handleSubmit = () => {
     // 백엔드로 전송
 
-    // 우선 홈 화면으로 이동
-    navigate("/main/home");
+    navigate("/tutorial/guide");
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
