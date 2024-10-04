@@ -14,12 +14,15 @@ const GuidePage: FC = () => {
 
   return (
     <PageLayout>
-      <h3 className="title2 text-navy-100">
-        지금부터 '폴라'가 당신에게 딱 맞는 퀘스트를 준비했어요.
-      </h3>
-      <img src={questListImg} />
+      <div className="flex flex-col justify-center items-center h-full mb-24 gap-5">
+        <h3 className="title3 text-navy-100 text-center">
+          지금부터 '폴라'가 당신에게 딱 맞는
+          <br /> 퀘스트를 준비했어요.
+        </h3>
+        <img src={questListImg} />
+      </div>
       <Button onClick={handleClick} isOnboarding>
-        다음
+        시작
       </Button>
     </PageLayout>
   );
