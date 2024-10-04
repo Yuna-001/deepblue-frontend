@@ -3,10 +3,11 @@ import { FC } from "react";
 import Header from "../../components/layout/Header";
 import graphImg from "../../assets/images/dashboard/graph.svg";
 import winkPolarImg from "../../assets/images/dashboard/wink-polar.svg";
+import MainPageLayout from "../../components/layout/MainPageLayout";
 
 const DashBoardPage: FC = () => {
   return (
-    <>
+    <MainPageLayout>
       <Header>
         <h1 className="title3 text-navy-100">대시보드</h1>
       </Header>
@@ -45,7 +46,7 @@ const DashBoardPage: FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </MainPageLayout>
   );
 };
 
