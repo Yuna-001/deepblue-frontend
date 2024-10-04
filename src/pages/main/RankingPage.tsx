@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/layout/Header";
 import Button from "../../components/buttons/Button";
 import UserInRanking from "../../components/ranking/UserInRanking";
+import MainPageLayout from "../../components/layout/MainPageLayout";
 
 // nickname,score,level,ranking
 const USERS = [
@@ -114,7 +115,7 @@ const RankingPage: FC = () => {
   };
 
   return (
-    <>
+    <MainPageLayout>
       <Header>
         <h1 className="title3 text-navy-100">랭킹</h1>
       </Header>
@@ -138,7 +139,7 @@ const RankingPage: FC = () => {
           ))}
         </ul>
       </div>
-    </>
+    </MainPageLayout>
   );
 };
 
