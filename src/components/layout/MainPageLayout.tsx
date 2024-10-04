@@ -1,16 +1,7 @@
-import { FC } from "react";
-import { Outlet } from "react-router-dom";
-import MainNavigation from "./MainNavigation";
+import { FC, ReactNode } from "react";
 
-const MainPageLayout: FC = () => {
-  return (
-    <>
-      <div className="h-full w-full mx-auto px-4 pb-14">
-        <Outlet />
-      </div>
-      <MainNavigation />
-    </>
-  );
+const MainPageLayout: FC<{ children: ReactNode }> = ({ children }) => {
+  return <div className="h-full w-full mx-auto px-4 pb-14">{children}</div>;
 };
 
 export default MainPageLayout;

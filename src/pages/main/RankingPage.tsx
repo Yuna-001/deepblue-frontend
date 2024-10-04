@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "../components/layout/Header";
-import Button from "../components/buttons/Button";
-import UserInRanking from "../components/ranking/UserInRanking";
+import Header from "../../components/layout/Header";
+import Button from "../../components/buttons/Button";
+import UserInRanking from "../../components/ranking/UserInRanking";
+import MainPageLayout from "../../components/layout/MainPageLayout";
 
 // nickname,score,level,ranking
 const USERS = [
@@ -114,14 +115,14 @@ const RankingPage: FC = () => {
   };
 
   return (
-    <>
+    <MainPageLayout>
       <Header>
         <h1 className="title3 text-navy-100">랭킹</h1>
       </Header>
       <div className="w-full flex flex-col items-center gap-7 h-full pb-14">
         <h2 className="title3 text-navy-100">
-          현재까지 상위{" "}
-          <span className="text-sky_blue-primary-500">{topPercent}%</span> 에요
+          현재까지 상위 <span className="text-sky_blue-500">{topPercent}%</span>{" "}
+          에요
         </h2>
         <div className="w-[100px] min-h-[100px] max-h-[100px] bg-white rounded-full"></div>
         <Button onClick={handleGoHome}>남은 퀘스트 하러 가기</Button>
@@ -138,7 +139,7 @@ const RankingPage: FC = () => {
           ))}
         </ul>
       </div>
-    </>
+    </MainPageLayout>
   );
 };
 

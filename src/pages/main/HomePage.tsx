@@ -1,14 +1,15 @@
 import { FC } from "react";
 
-import Header from "../components/layout/Header";
+import Header from "../../components/layout/Header";
 
-import QusetList from "../components/home/QuestList";
-import TotalPoint from "../components/home/TotalPoint";
-import RemainingTime from "../components/home/RemainingTime";
+import QusetList from "../../components/home/QuestList";
+import TotalPoint from "../../components/home/TotalPoint";
+import RemainingTime from "../../components/home/RemainingTime";
+import MainPageLayout from "../../components/layout/MainPageLayout";
 
 const HomePage: FC = () => {
   return (
-    <>
+    <MainPageLayout>
       <Header>
         <h1 className="title3 text-navy-100">홈</h1>
       </Header>
@@ -20,7 +21,7 @@ const HomePage: FC = () => {
       <div className="h-full overflow-y-auto pb-28 scrollbar-hidden">
         <QusetList />
       </div>
-    </>
+    </MainPageLayout>
   );
 };
 

@@ -1,7 +1,7 @@
 import { FC, ChangeEvent, useEffect, useState } from "react";
 
-import PageLayout from "../components/layout/PageLayout";
-import Button from "../components/buttons/Button";
+import OnboardingLayout from "../../components/layout/OnboardingLayout";
+import Button from "../../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 
 const NicknameSettingPage: FC = () => {
@@ -23,8 +23,8 @@ const NicknameSettingPage: FC = () => {
     messageClasses += "text-error_color";
   } else {
     // 통과
-    inputFieldClasses += "border-point_color-emerald";
-    messageClasses += "text-point_color-emerald";
+    inputFieldClasses += "border-point_color-mint";
+    messageClasses += "text-point_color-mint";
   }
 
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ const NicknameSettingPage: FC = () => {
   }, [nickname, hasChanged]);
 
   return (
-    <PageLayout withBackArrow>
+    <OnboardingLayout withBackArrow>
       <form
         className="h-full mb-36 flex flex-col justify-center"
         onSubmit={handleSubmit}
@@ -87,7 +87,7 @@ const NicknameSettingPage: FC = () => {
       <Button onClick={handleSubmit} disabled={disabled} isOnboarding>
         다음
       </Button>
-    </PageLayout>
+    </OnboardingLayout>
   );
 };
 
