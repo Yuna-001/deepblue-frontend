@@ -10,7 +10,7 @@ const CompleteButton: FC<{ onClick: () => void; isCompleted: boolean }> = ({
     classes += "bg-navy-700 text-navy-500";
   } else {
     // 활성
-    classes += "text-navy-800 bg-sky_blue-primary-500";
+    classes += "text-navy-800 bg-sky_blue-500";
   }
   return (
     <button onClick={onClick} className={classes} disabled={isCompleted}>

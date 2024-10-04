@@ -1,13 +1,13 @@
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import questionsData from "../assets/questions.json";
-import Answer from "../components/buttons/Answer";
-import PageLayout from "../components/layout/PageLayout";
+import questionsData from "../../assets/data/questions.json";
+import Answer from "../../components/buttons/Answer";
+import OnboardingLayout from "../../components/layout/OnboardingLayout";
 
-import question1Img from "../assets/images/onboarding/question1.svg";
-import question2Img from "../assets/images/onboarding/question2.svg";
-import question3Img from "../assets/images/onboarding/question3.svg";
+import question1Img from "../../assets/images/onboarding/question1.svg";
+import question2Img from "../../assets/images/onboarding/question2.svg";
+import question3Img from "../../assets/images/onboarding/question3.svg";
 
 const QuestionPage: FC = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const QuestionPage: FC = () => {
   };
 
   return (
-    <PageLayout withBackArrow>
+    <OnboardingLayout withBackArrow>
       <div className="w-full flex flex-col items-center gap-7 pt-7">
         <img src={imgList[questionIndex]} />
         <h2 className="title3 h-16 py-auto text-navy-100 whitespace-pre-line text-center">
@@ -51,7 +51,7 @@ const QuestionPage: FC = () => {
           />
         ))}
       </ul>
-    </PageLayout>
+    </OnboardingLayout>
   );
 };
 

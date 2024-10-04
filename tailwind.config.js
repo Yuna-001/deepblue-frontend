@@ -9,8 +9,8 @@ export default {
         pretendard: ["Pretendard", "sans-serif"],
       },
       backgroundImage: {
-        auth: "url('./assets/images/auth-page-bg.svg')",
-        splash: "url('./assets/images/splash-page-bg.svg')",
+        auth: "url('./assets/images/bg/auth-page-bg.svg')",
+        splash: "url('./assets/images/bg/splash-page-bg.svg')",
       },
       width: {
         web_basic: "360px",
@@ -41,16 +41,14 @@ export default {
           800: "#143350",
         },
         sky_blue: {
-          primary: {
-            100: "#DFF3FB",
-            300: "#9FDCF3",
-            500: "#60C5EB",
-            600: "#4D9DBC",
-            800: "#264F5E",
-          },
+          100: "#DFF3FB",
+          300: "#9FDCF3",
+          500: "#60C5EB",
+          600: "#4D9DBC",
+          800: "#264F5E",
         },
         point_color: {
-          emerald: "#00B5AE",
+          mint: "#00B5AE",
           yellow: "#FFD602",
         },
         error_color: "#FF5602",

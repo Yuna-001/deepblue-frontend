@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import SplashPage from "../../pages/SplashPage";
+
+import SplashPage from "../../pages/onboarding/SplashPage";
 
 const SPLASH_DISPLAY_TIME = 3000;
 

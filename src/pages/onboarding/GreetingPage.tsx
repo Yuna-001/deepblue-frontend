@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import PageLayout from "../components/layout/PageLayout";
-import Button from "../components/buttons/Button";
-import greetingPolarImg from "../assets/images/onboarding/hi-polar.svg";
+import OnboardingLayout from "../../components/layout/OnboardingLayout";
+import Button from "../../components/buttons/Button";
+import greetingPolarImg from "../../assets/images/onboarding/hi-polar.svg";
 
 const GreetingPage: FC = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const GreetingPage: FC = () => {
   };
 
   return (
-    <PageLayout withBackArrow>
+    <OnboardingLayout withBackArrow>
       <div className="flex flex-col justify-center h-full mb-24 gap-2">
         <h3 className="title3 text-navy-100 text-left">
           반가워요!
@@ -26,7 +26,7 @@ const GreetingPage: FC = () => {
       <Button onClick={handleClick} isOnboarding>
         다음
       </Button>
-    </PageLayout>
+    </OnboardingLayout>
   );
 };
 
