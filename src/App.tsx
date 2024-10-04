@@ -3,17 +3,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 import RootLayout from "./components/layout/RootLayout";
-import QuestionPage from "./pages/QuestionPage";
-import AuthPage from "./pages/AuthPage";
-import CallbackPage from "./pages/CallbackPage";
-import NicknameSettingPage from "./pages/NicknameSettingPage";
-import HomePage from "./pages/HomePage";
+import IntroPage from "./pages/onboarding/IntroPage";
+import QuestionPage from "./pages/onboarding/QuestionPage";
+import AuthPage from "./pages/onboarding/AuthPage";
+import CallbackPage from "./pages/onboarding/CallbackPage";
+import NicknameSettingPage from "./pages/onboarding/NicknameSettingPage";
+import GreetingPage from "./pages/onboarding/GreetingPage";
+import GuidePage from "./pages/onboarding/GuidePage";
 import MainPageLayout from "./components/layout/MainPageLayout";
-import RankingPage from "./pages/RankingPage";
-import IntroPage from "./pages/IntroPage";
-import GreetingPage from "./pages/GreetingPage";
-import GuidePage from "./pages/GuidePage";
-import DashBoardPage from "./pages/DashBoardPage";
+import HomePage from "./pages/main/HomePage";
+import RankingPage from "./pages/main/RankingPage";
+import DashBoardPage from "./pages/main/DashBoardPage";
 
 function App() {
   const router = createBrowserRouter([

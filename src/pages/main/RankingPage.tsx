@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "../components/layout/Header";
-import Button from "../components/buttons/Button";
-import UserInRanking from "../components/ranking/UserInRanking";
+import Header from "../../components/layout/Header";
+import Button from "../../components/buttons/Button";
+import UserInRanking from "../../components/ranking/UserInRanking";
 
 // nickname,score,level,ranking
 const USERS = [

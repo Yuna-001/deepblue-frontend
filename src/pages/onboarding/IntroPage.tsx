@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import OnboardingLayout from "../components/layout/OnboardingLayout";
-import Button from "../components/buttons/Button";
+import OnboardingLayout from "../../components/layout/OnboardingLayout";
+import Button from "../../components/buttons/Button";
 
 const IntroPage: FC = () => {
   const navigate = useNavigate();

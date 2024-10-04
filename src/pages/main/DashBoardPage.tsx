@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-import Header from "../components/layout/Header";
-import graphImg from "../assets/images/dashboard/graph.svg";
-import winkPolarImg from "../assets/images/dashboard/wink-polar.svg";
+import Header from "../../components/layout/Header";
+import graphImg from "../../assets/images/dashboard/graph.svg";
+import winkPolarImg from "../../assets/images/dashboard/wink-polar.svg";
 
 const DashBoardPage: FC = () => {
   return (

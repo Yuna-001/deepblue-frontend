@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-import Header from "../components/layout/Header";
+import Header from "../../components/layout/Header";
 
-import QusetList from "../components/home/QuestList";
-import TotalPoint from "../components/home/TotalPoint";
-import RemainingTime from "../components/home/RemainingTime";
+import QusetList from "../../components/home/QuestList";
+import TotalPoint from "../../components/home/TotalPoint";
+import RemainingTime from "../../components/home/RemainingTime";
 
 const HomePage: FC = () => {
   return (

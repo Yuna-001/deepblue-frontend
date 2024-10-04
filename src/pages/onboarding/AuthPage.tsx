@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-import Button from "../components/buttons/Button";
-import googleLogoImg from "../assets/images/onboarding/google-logo.png";
-import OnboardingLayout from "../components/layout/OnboardingLayout";
+import Button from "../../components/buttons/Button";
+import googleLogoImg from "../../assets/images/onboarding/google-logo.png";
+import OnboardingLayout from "../../components/layout/OnboardingLayout";
 
 const AuthPage: FC = () => {
   const handleLogin = () => {

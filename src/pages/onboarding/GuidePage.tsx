@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import OnboardingLayout from "../components/layout/OnboardingLayout";
-import Button from "../components/buttons/Button";
-import questListImg from "../assets/images/onboarding/quest-illust.svg";
+import OnboardingLayout from "../../components/layout/OnboardingLayout";
+import Button from "../../components/buttons/Button";
+import questListImg from "../../assets/images/onboarding/quest-illust.svg";
 
 const GuidePage: FC = () => {
   const navigate = useNavigate();

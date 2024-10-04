@@ -1,7 +1,7 @@
 import { FC, ChangeEvent, useEffect, useState } from "react";
 
-import OnboardingLayout from "../components/layout/OnboardingLayout";
-import Button from "../components/buttons/Button";
+import OnboardingLayout from "../../components/layout/OnboardingLayout";
+import Button from "../../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 
 const NicknameSettingPage: FC = () => {

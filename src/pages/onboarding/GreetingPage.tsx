@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import OnboardingLayout from "../components/layout/OnboardingLayout";
-import Button from "../components/buttons/Button";
-import greetingPolarImg from "../assets/images/onboarding/hi-polar.svg";
+import OnboardingLayout from "../../components/layout/OnboardingLayout";
+import Button from "../../components/buttons/Button";
+import greetingPolarImg from "../../assets/images/onboarding/hi-polar.svg";
 
 const GreetingPage: FC = () => {
   const navigate = useNavigate();

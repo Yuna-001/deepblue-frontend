@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { FC, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { fetchUser } from "../utils/api";
+import { fetchUser } from "../../utils/api";
 
 const CallbackPage: FC = () => {
   const navigate = useNavigate();
