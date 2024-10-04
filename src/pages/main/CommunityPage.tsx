@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Header from "../../components/layout/Header";
 import searchIcon from "../../assets/images/community/search.svg";
