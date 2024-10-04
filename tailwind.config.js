@@ -9,8 +9,8 @@ export default {
         pretendard: ["Pretendard", "sans-serif"],
       },
       backgroundImage: {
-        auth: "url('./assets/images/auth-page-bg.svg')",
-        splash: "url('./assets/images/splash-page-bg.svg')",
+        auth: "url('./assets/images/bg/auth-page-bg.svg')",
+        splash: "url('./assets/images/bg/splash-page-bg.svg')",
       },
       width: {
         web_basic: "360px",

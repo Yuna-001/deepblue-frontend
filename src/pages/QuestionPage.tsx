@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import questionsData from "../assets/questions.json";
+import questionsData from "../assets/data/questions.json";
 import Answer from "../components/buttons/Answer";
 import PageLayout from "../components/layout/PageLayout";
 

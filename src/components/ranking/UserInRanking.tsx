@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import { pointFormatting } from "../../utils/formatting";
-import polarPointImg from "../../assets/images/small-polar-point-icon.svg";
+import polarPointImg from "../../assets/images/rank/small-polar-point-icon.svg";
 
 import crown1Img from "../../assets/images/rank/crown1.svg";
 import crown2Img from "../../assets/images/rank/crown2.svg";

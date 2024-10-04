@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import Button from "../components/buttons/Button";
-import googleLogoImg from "../assets/images/google-logo.png";
+import googleLogoImg from "../assets/images/onboarding/google-logo.png";
 import PageLayout from "../components/layout/PageLayout";
 
 const AuthPage: FC = () => {
