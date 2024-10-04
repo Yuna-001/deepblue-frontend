@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import PageLayout from "../components/layout/PageLayout";
 import Button from "../components/buttons/Button";
 import greetingPolarImg from "../assets/images/onboarding/hi-polar.svg";
-import Header from "../components/layout/Header";
 
 const GreetingPage: FC = () => {
   const navigate = useNavigate();
