@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import SplashPage from "../../pages/SplashPage";
 
-const SPLASH_DISPLAY_TIME = 1500;
+const SPLASH_DISPLAY_TIME = 3000;
 
 const RootLayout: FC = () => {
   const [isRevisit, setIsRevisit] = useState<boolean>(

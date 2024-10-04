@@ -10,6 +10,10 @@ import NicknameSettingPage from "./pages/NicknameSettingPage";
 import HomePage from "./pages/HomePage";
 import MainPageLayout from "./components/layout/MainPageLayout";
 import RankingPage from "./pages/RankingPage";
+import IntroPage from "./pages/IntroPage";
+import GreetingPage from "./pages/GreetingPage";
+import GuidePage from "./pages/GuidePage";
+import DashBoardPage from "./pages/DashBoardPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,7 +21,7 @@ function App() {
       path: "/",
       element: <RootLayout />,
       children: [
-        { index: true, element: <h1>ONBOARDING</h1> },
+        { index: true, element: <IntroPage /> },
         {
           path: "auth",
           children: [
@@ -28,10 +32,10 @@ function App() {
         {
           path: "tutorial",
           children: [
-            { index: true, element: <h1>FISRT TUTORIAL</h1> },
+            { index: true, element: <GreetingPage /> },
             { path: "questions", element: <QuestionPage /> },
             { path: "nickname-setting", element: <NicknameSettingPage /> },
-            { path: "guide", element: <h1>GUIDE</h1> },
+            { path: "guide", element: <GuidePage /> },
           ],
         },
         {
@@ -41,7 +45,7 @@ function App() {
             { path: "home", element: <HomePage /> },
             { path: "communication", element: <h1>COMMUNITY</h1> },
             { path: "ranking", element: <RankingPage /> },
-            { path: "dashboard", element: <h1>DASHBOARD</h1> },
+            { path: "dashboard", element: <DashBoardPage /> },
           ],
         },
       ],
