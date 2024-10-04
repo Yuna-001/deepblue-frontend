@@ -24,7 +24,7 @@ const AuthPage: FC = () => {
         <Button onClick={handleLogin} isLoginButton isOnboarding>
           <div className="flex flex-row justify-center gap-2">
             <img src={googleLogoImg} />
-            <div>Google 계정으로 가입</div>
+            <div>Google 계정으로 계속하기</div>
           </div>
         </Button>
       </PageLayout>
