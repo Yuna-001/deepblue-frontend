@@ -1,6 +1,6 @@
 import { FC, ChangeEvent, useEffect, useState } from "react";
 
-import PageLayout from "../components/layout/PageLayout";
+import OnboardingLayout from "../components/layout/OnboardingLayout";
 import Button from "../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 
@@ -64,7 +64,7 @@ const NicknameSettingPage: FC = () => {
   }, [nickname, hasChanged]);
 
   return (
-    <PageLayout withBackArrow>
+    <OnboardingLayout withBackArrow>
       <form
         className="h-full mb-36 flex flex-col justify-center"
         onSubmit={handleSubmit}
@@ -87,7 +87,7 @@ const NicknameSettingPage: FC = () => {
       <Button onClick={handleSubmit} disabled={disabled} isOnboarding>
         다음
       </Button>
-    </PageLayout>
+    </OnboardingLayout>
   );
 };
 

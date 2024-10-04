@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import Button from "../components/buttons/Button";
 import googleLogoImg from "../assets/images/onboarding/google-logo.png";
-import PageLayout from "../components/layout/PageLayout";
+import OnboardingLayout from "../components/layout/OnboardingLayout";
 
 const AuthPage: FC = () => {
   const handleLogin = () => {
@@ -15,7 +15,7 @@ const AuthPage: FC = () => {
 
   return (
     <div className="h-full w-full bg-auth bg-cover bg-no-repeat">
-      <PageLayout>
+      <OnboardingLayout>
         <div className=" text-navy-100 my-11">
           <p className="body">당신의 마음 속, 깊은 바다까지</p>
           <h1 className="title1 my-3">
@@ -30,7 +30,7 @@ const AuthPage: FC = () => {
             <div>Google 계정으로 계속하기</div>
           </div>
         </Button>
-      </PageLayout>
+      </OnboardingLayout>
     </div>
   );
 };

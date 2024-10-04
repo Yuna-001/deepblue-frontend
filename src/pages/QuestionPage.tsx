@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import questionsData from "../assets/data/questions.json";
 import Answer from "../components/buttons/Answer";
-import PageLayout from "../components/layout/PageLayout";
+import OnboardingLayout from "../components/layout/OnboardingLayout";
 
 import question1Img from "../assets/images/onboarding/question1.svg";
 import question2Img from "../assets/images/onboarding/question2.svg";
@@ -35,7 +35,7 @@ const QuestionPage: FC = () => {
   };
 
   return (
-    <PageLayout withBackArrow>
+    <OnboardingLayout withBackArrow>
       <div className="w-full flex flex-col items-center gap-7 pt-7">
         <img src={imgList[questionIndex]} />
         <h2 className="title3 h-16 py-auto text-navy-100 whitespace-pre-line text-center">
@@ -51,7 +51,7 @@ const QuestionPage: FC = () => {
           />
         ))}
       </ul>
-    </PageLayout>
+    </OnboardingLayout>
   );
 };
 
