@@ -1,11 +1,11 @@
-import { post, get } from "./http";
+import { get } from "./http";
 
 export const fetchUser = async (code: string) => {
   //   const data = { code };
   //   const res = await post("", data);
   //   const accessToken = res.data.accessToken;
   //   const isExistingMember = res.data.isExistingMember;
-
+  console.log(code);
   // mock 데이터
   const res = await get("/mocks/mockLoginData.json");
   // res.data[0]은 기존 회원

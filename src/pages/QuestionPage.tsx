@@ -26,6 +26,7 @@ const QuestionPage: FC = () => {
       const updatedScore = hikikomoriScore + point;
 
       // updatedScore를 백엔드로 전송
+      console.log(updatedScore);
 
       navigate("/tutorial/nickname-setting");
     } else {
