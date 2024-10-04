@@ -1,0 +1,9 @@
+{
+  "data": [
+    {
+      "accessToken": "sampleAccessToken12345",
+      "isExistingMember": true
+    },
+    { "accessToken": "sampleAccessToken67890", "isExistingMember": false }
+  ]
+}
