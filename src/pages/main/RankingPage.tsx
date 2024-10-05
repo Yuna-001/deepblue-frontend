@@ -39,7 +39,7 @@ const RankingPage: FC = () => {
         <div className="w-[100px] min-h-[100px] max-h-[100px] bg-white rounded-full"></div>
         <Button onClick={handleGoHome}>남은 퀘스트 하러 가기</Button>
 
-        <ul className="w-full border border-navy-700 rounded-t-lg py-6 px-2 flex flex-col gap-5 h-fit overflow-y-auto scrollbar-hidden">
+        <ul className="w-full border border-navy-700 rounded-lg py-6 px-2 flex flex-col gap-5 h-fit overflow-y-auto scrollbar-hidden">
           {rankers?.map(({ ranking, nickname, level, score }) => (
             <UserInRanking
               key={nickname}

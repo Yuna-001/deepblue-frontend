@@ -5,28 +5,33 @@ import UserInfoType from "../models/userInfo";
 import UserRankingType from "../models/userRanking";
 import { get, post } from "./http";
 
+const getToken = () => {
+  return localStorage.getItem("token");
+};
+
 /* 온보딩 */
 
-export const fetchUser = async (code: string) => {
-  const res = await post("/login", {
-    code,
-  });
+// export const fetchUser = async (code: string) => {
+//   const res = await post("https://api.diver-deepblue.app/google/login/", {
+//     code,
+//   });
 
-  // 기존에 닉네임이나 설문 레벨을 세팅했는지
-  return res.data as {
-    token: string;
-    has_nickname: boolean;
-    has_survey_level: boolean;
-  };
-};
+//   // 기존에 닉네임이나 설문 레벨을 세팅했는지
+//   return res as {
+//     token: string;
+//     has_nickname: boolean;
+//     has_survey_level: boolean;
+//   };
+// };
 
 // 이건 백엔드 api 다 작성되면 페이지랑 같이 수정하기
 export const checkIsDuplicatedNickname = async (nickname: string) => {
-  const res = await get("", {
-    nickname,
-  });
+  // const res = await get("", {
+  //   nickname,
+  // });
 
-  return res.data;
+  // return res.data;
+  return {};
 };
 
 export const submitUserInfo = async ({
@@ -37,11 +42,12 @@ export const submitUserInfo = async ({
   nickname: string;
 }) => {
   const data = { survey_level: surveyLevel, nickname };
-  const res = await post("/userInfo", data);
 
-  localStorage.setItem("id", res.data.id);
+  const res = await post("https://api.diver-deepblue.app/userinfo/", data);
 
-  return res.data;
+  localStorage.setItem("token", res.token);
+
+  return res;
 };
 
 /* 홈 */
@@ -49,37 +55,47 @@ export const submitUserInfo = async ({
 // 퀘스트리스트 초기화를 언제해야 하는지 논의 필요
 
 export const submitDailyCheck = async () => {
-  const res = await post("/dailycheck", {});
-
-  return res.data;
+  const token = getToken();
+  const res = await post("https://api.diver-deepblue.app/dailycheck/", {
+    token,
+  });
+  console.log(res);
+  return res;
 };
 
 export const fetchQuests = async () => {
-  const res = await get("/quests");
+  const token = getToken();
+  const res = await get("https://api.diver-deepblue.app/quests/", { token });
+  console.log(res);
 
-  return res.data as Array<QuestType>;
+  return res as Array<QuestType>;
 };
 
 export const fetchUserInfo = async () => {
-  const res = await get("/userInfo");
+  const token = getToken();
+  const res = await get("https://api.diver-deepblue.app/userInfo/", { token });
 
-  return res.data as UserInfoType;
+  return res as UserInfoType;
 };
 
 /* 랭킹 */
 
 export const fetchRanking = async () => {
-  const res = await get("/ranking");
+  const token = getToken();
+  const res = await get("https://api.diver-deepblue.app/ranking/", { token });
 
-  return res.data as Array<UserRankingType>;
+  return res as Array<UserRankingType>;
 };
 
 /* 대시보드 */
 
 export const fetchDashboardInfo = async () => {
-  const res = await post("/dashboard", {});
-
-  return res.data as DashBoardInfoType;
+  const token = getToken();
+  const res = await post("https://api.diver-deepblue.app/dashboard/", {
+    token,
+  });
+  console.log(res);
+  return res as DashBoardInfoType;
 };
 
 /* 커뮤니티 */
@@ -88,7 +104,8 @@ export const fetchPosts = async (
   category: string | undefined,
   type: string | undefined,
 ) => {
-  const data = { category, type };
+  const token = getToken();
+  const data = { category, type, token };
 
   switch (category) {
     case "free":
@@ -106,8 +123,7 @@ export const fetchPosts = async (
 
   if (!type) type = "realtime";
 
-  console.log(data);
-  const res = await get("/posts", data);
-  console.log(res.data);
-  return res.data as Array<PostType>;
+  const res = await get("https://api.diver-deepblue.app/posts/", data);
+
+  return res as Array<PostType>;
 };

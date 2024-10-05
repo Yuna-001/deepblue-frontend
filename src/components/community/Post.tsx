@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import HearIcon from "../icons/HeartIcon";
 
 type PostProps = {
-  id: string;
   title: string;
   content: string;
   nickname: string;
@@ -10,7 +9,7 @@ type PostProps = {
   likes: number;
 };
 
-const Post: FC<PostProps> = ({ id, title, content, nickname, date, likes }) => {
+const Post: FC<PostProps> = ({ title, content, nickname, date, likes }) => {
   const showingLike = likes < 1000 ? likes.toString() : "999+";
   const [likeIsActive, setLikeIsActive] = useState<boolean>(false);
 
@@ -19,7 +18,6 @@ const Post: FC<PostProps> = ({ id, title, content, nickname, date, likes }) => {
 
   const onClickLike = () => {
     setLikeIsActive((prevState) => !prevState);
-    console.log(id);
   };
 
   return (
