@@ -11,6 +11,7 @@ export default {
       backgroundImage: {
         auth: "url('./assets/images/bg/auth-page-bg.svg')",
         splash: "url('./assets/images/bg/splash-page-bg.svg')",
+        pc: "url('./assets/images/bg/pc-bg.png')",
       },
       width: {
         web_basic: "360px",
