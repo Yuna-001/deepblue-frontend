@@ -6,7 +6,7 @@ const CommunityCategoryButton: FC<{
   sort: string | undefined;
   text: string;
 }> = ({ category, sort, text }) => {
-  if (!sort) sort = "latest";
+  if (!sort) sort = "realtime";
 
   const baseClasses =
     "w-[76px] title4 pb-1 transition-all duration-75 text-center ";

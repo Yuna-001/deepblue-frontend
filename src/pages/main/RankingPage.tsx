@@ -1,114 +1,41 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
+import { fetchQuests, fetchRanking, fetchUserInfo } from "../../utils/api";
 import Header from "../../components/layout/Header";
 import Button from "../../components/buttons/Button";
 import UserInRanking from "../../components/ranking/UserInRanking";
 import MainPageLayout from "../../components/layout/MainPageLayout";
-
-// nickname,score,level,ranking
-const USERS = [
-  {
-    ranking: 1,
-    nickname: "가나다라마바사아자차",
-    level: 100,
-    score: 150000,
-  },
-  {
-    ranking: 2,
-    nickname: "최대 10자",
-    level: 5,
-    score: 99999,
-  },
-  {
-    ranking: 3,
-    nickname: "닉네임닉네임닉네임닉네임닉네임",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 4,
-    nickname: "랭킹",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 5,
-    nickname: "가로길이",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 6,
-    nickname: "확인해보기",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 7,
-    nickname: "언제 다 만들까요...",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 8,
-    nickname: "ㅠㅠㅠㅠㅠㅠ9",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 11,
-    nickname: "ㅠㅠㅠㅠㅠㅠ8",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 55,
-    nickname: "ㅠㅠㅠㅠㅠㅠ7",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 80,
-    nickname: "ㅠㅠㅠㅠㅠㅠ6",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 81,
-    nickname: "ㅠㅠㅠㅠㅠㅠ5",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 82,
-    nickname: "ㅠㅠㅠㅠㅠㅠ4",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 83,
-    nickname: "ㅠㅠㅠㅠㅠㅠ3",
-    level: 5,
-    score: 1000,
-  },
-  {
-    ranking: 85,
-    nickname: "ㅠㅠㅠㅠㅠㅠ2",
-    level: 100,
-    score: 1000,
-  },
-  {
-    ranking: 100,
-    nickname: "ㅠㅠㅠㅠㅠㅠ1",
-    level: 5,
-    score: 100,
-  },
-];
+import roundPolarLogo from "../../assets/images/rank/round-polar-logo.svg";
+import starImg from "../../assets/images/rank/star.svg";
 
 const RankingPage: FC = () => {
   const navigate = useNavigate();
-  const topPercent = 10;
+
+  const { data: rankers = [] } = useQuery({
+    queryFn: fetchRanking,
+    queryKey: ["ranking"],
+  });
+
+  const { data: user } = useQuery({
+    queryFn: fetchUserInfo,
+    queryKey: ["userInfo"],
+  });
+
+  const { data: quests } = useQuery({
+    queryFn: fetchQuests,
+    queryKey: ["quests"],
+  });
+
+  const userTopPercent = rankers.find(
+    (ranker) => ranker.nickname === user?.nickname,
+  )?.top_percent;
+
+  const showingUserTopPercent: number = Math.round(Number(userTopPercent || 0));
+  const isVisibleStar: boolean = showingUserTopPercent <= 30;
+  const isAllClear: boolean =
+    quests?.every(({ is_cleared }) => is_cleared === true) ?? false;
 
   const handleGoHome = () => {
     navigate("/main/home");
@@ -121,14 +48,29 @@ const RankingPage: FC = () => {
       </Header>
       <div className="w-full flex flex-col items-center gap-7 h-full pb-14">
         <h2 className="title3 text-navy-100">
-          현재까지 상위 <span className="text-sky_blue-500">{topPercent}%</span>{" "}
+          현재까지 상위{" "}
+          <span className="text-sky_blue-500">{showingUserTopPercent}%</span>{" "}
           에요
         </h2>
-        <div className="w-[100px] min-h-[100px] max-h-[100px] bg-white rounded-full"></div>
-        <Button onClick={handleGoHome}>남은 퀘스트 하러 가기</Button>
+        <div className="relative">
+          <img
+            src={roundPolarLogo}
+            alt="딥블루 캐릭터 로고"
+            className="-z-10"
+          />
+          {isVisibleStar && (
+            <>
+              <img src={starImg} alt="별" className="absolute top-2 right-0" />
+              <img src={starImg} alt="별" className="absolute top-7 -right-4" />
+            </>
+          )}
+        </div>
+        <Button onClick={handleGoHome} disabled={isAllClear}>
+          {isAllClear ? "새로운 퀘스트 생성 중" : "남은 퀘스트 하러 가기"}
+        </Button>
 
-        <ul className="w-full border border-navy-700 rounded-t-lg py-6 px-2 flex flex-col gap-5 h-fit overflow-y-auto scrollbar-hidden">
-          {USERS.map(({ ranking, nickname, level, score }) => (
+        <ul className="w-full border border-navy-700 rounded-lg py-6 px-2 flex flex-col gap-5 h-fit overflow-y-auto scrollbar-hidden">
+          {rankers?.map(({ ranking, nickname, level, score }) => (
             <UserInRanking
               key={nickname}
               nickname={nickname}

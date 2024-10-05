@@ -3,12 +3,38 @@ import { FC, ChangeEvent, useEffect, useState } from "react";
 import OnboardingLayout from "../../components/layout/OnboardingLayout";
 import Button from "../../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { checkIsDuplicatedNickname, submitUserInfo } from "../../utils/api";
+import useSurveyScoreStore from "../../store/surveyScore";
 
 const NicknameSettingPage: FC = () => {
   const [nickname, setNickname] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [disabled, setDisabled] = useState<boolean>(true);
   const [hasChanged, setHasChanged] = useState<boolean>(false);
+
+  const surveyScore = useSurveyScoreStore((state) => state.surveyScore);
+
+  const { mutate: mutateUserInfo } = useMutation({
+    mutationFn: submitUserInfo,
+  });
+
+  const { mutate: mutateNicknameCheck } = useMutation({
+    mutationFn: checkIsDuplicatedNickname,
+    onSuccess: (data: { available: boolean }) => {
+      if (!data.available) {
+        setMessage("이미 사용중인 닉네임입니다. 다른 닉네임을 입력하세요.");
+        setDisabled(true);
+      } else {
+        setMessage("사용이 가능한 닉네임입니다.");
+        setDisabled(false);
+      }
+    },
+    onError: () => {
+      setMessage("닉네임 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+      setDisabled(true);
+    },
+  });
 
   let inputFieldClasses =
     "h-12 w-full bg-navy-800 body1 text-navy-100 outline-none text-center rounded-lg border ";
@@ -30,7 +56,17 @@ const NicknameSettingPage: FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    // 백엔드로 전송
+    let surveyLevel: number;
+
+    if (surveyScore > 5) {
+      surveyLevel = 1;
+    } else if (surveyScore > 2) {
+      surveyLevel = 2;
+    } else {
+      surveyLevel = 3;
+    }
+
+    mutateUserInfo({ surveyLevel, nickname });
 
     navigate("/tutorial/guide");
   };
@@ -49,19 +85,10 @@ const NicknameSettingPage: FC = () => {
         setMessage("닉네임은 2자에서 15자 사이여야 합니다.");
         setDisabled(true);
       } else {
-        // 백엔드에서 받기
-        const isDuplicated = false;
-
-        if (isDuplicated) {
-          setMessage("이미 사용중인 닉네임입니다. 다른 닉네임을 입력하세요.");
-          setDisabled(true);
-        } else {
-          setMessage("사용이 가능한 닉네임입니다.");
-          setDisabled(false);
-        }
+        mutateNicknameCheck(nickname);
       }
     }
-  }, [nickname, hasChanged]);
+  }, [nickname]);
 
   return (
     <OnboardingLayout withBackArrow>

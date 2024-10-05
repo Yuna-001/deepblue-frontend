@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import questionsData from "../../assets/data/questions.json";
 import Answer from "../../components/buttons/Answer";
@@ -8,36 +8,38 @@ import OnboardingLayout from "../../components/layout/OnboardingLayout";
 import question1Img from "../../assets/images/onboarding/question1.svg";
 import question2Img from "../../assets/images/onboarding/question2.svg";
 import question3Img from "../../assets/images/onboarding/question3.svg";
+import useSurveyScoreStore from "../../store/surveyScore";
 
+const IMAGE_LIST = [question1Img, question2Img, question3Img];
+
+// 뒤로 가기하면 점수를 리셋시키거나 필요한 만큼 빼는 로직 필요
 const QuestionPage: FC = () => {
   const navigate = useNavigate();
+  const { questionIndex } = useParams();
+  let questionIdx: number;
 
-  const imgList = [question1Img, question2Img, question3Img];
+  if (questionIndex === undefined) questionIdx = 0;
+  else questionIdx = +questionIndex;
 
-  const [questionIndex, setQuestionIndex] = useState<number>(0);
-  const [hikikomoriScore, setHikikomoriScore] = useState<number>(0);
+  const increaseSurveyScore = useSurveyScoreStore(
+    (state) => state.increaseSurveyScore,
+  );
 
-  const { question, answers } = questionsData[questionIndex];
+  const { question, answers } = questionsData[questionIdx];
 
-  const handelAnswerClick = (point: number) => {
-    setHikikomoriScore((pervScore) => pervScore + point);
-
-    if (questionIndex === questionsData.length - 1) {
-      const updatedScore = hikikomoriScore + point;
-
-      // updatedScore를 백엔드로 전송
-      console.log(updatedScore);
-
-      navigate("/tutorial/nickname-setting");
+  const handleAnswerClick = (point: number) => {
+    increaseSurveyScore(point);
+    if (questionIdx < questionsData.length - 1) {
+      navigate(`/tutorial/questions/${questionIdx + 1}`);
     } else {
-      setQuestionIndex((prevIndex) => prevIndex + 1);
+      navigate("/tutorial/nickname-setting");
     }
   };
 
   return (
     <OnboardingLayout withBackArrow>
       <div className="w-full flex flex-col items-center gap-7 pt-7">
-        <img src={imgList[questionIndex]} />
+        <img src={IMAGE_LIST[questionIdx]} />
         <h2 className="title3 h-16 py-auto text-navy-100 whitespace-pre-line text-center">
           {question}
         </h2>
@@ -47,7 +49,7 @@ const QuestionPage: FC = () => {
           <Answer
             key={answer}
             text={answer}
-            onClick={() => handelAnswerClick(point + 1)}
+            onClick={() => handleAnswerClick(point)}
           />
         ))}
       </ul>

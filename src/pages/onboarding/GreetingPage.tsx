@@ -9,7 +9,7 @@ const GreetingPage: FC = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/tutorial/questions");
+    navigate("/tutorial/questions/0");
   };
 
   return (

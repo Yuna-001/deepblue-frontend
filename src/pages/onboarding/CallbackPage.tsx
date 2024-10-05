@@ -1,34 +1,46 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
+// import { FC, useEffect } from "react";
+// import { useNavigate, useSearchParams } from "react-router-dom";
+// import { fetchUser } from "../../utils/api";
+
 import { FC, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { fetchUser } from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 
 const CallbackPage: FC = () => {
   const navigate = useNavigate();
 
-  const [searchParams] = useSearchParams();
-  const code = searchParams.get("code");
+  // const [searchParams] = useSearchParams();
+  // const code = searchParams.get("code");
 
-  const { data: user, isLoading } = useQuery({
-    queryFn: () => fetchUser(code as string),
-    queryKey: ["user-auth"],
-  });
+  // const { data, isLoading } = useQuery({
+  //   queryFn: () => fetchUser(code as string),
+  //   queryKey: ["user-auth"],
+  // });
 
-  if (!code) navigate("/auth");
+  // if (!code) navigate("/auth");
+
+  // useEffect(() => {
+  //   if (!isLoading && data) {
+  //     const { token, has_nickname, has_survey_level } = data;
+
+  //     if (has_nickname && has_survey_level) {
+  //       localStorage.setItem("token", token);
+  //       navigate("/main/home");
+  //     } else {
+  //       navigate("/tutorial");
+  //     }
+  //   }
+  // }, [data, isLoading, navigate]);
 
   useEffect(() => {
-    if (!isLoading && user) {
-      const { accessToken, isExistingMember } = user;
+    const token = localStorage.getItem("token");
 
-      localStorage.setItem("accessToken", accessToken);
-
-      if (isExistingMember) {
-        navigate("/main/home");
-      } else {
-        navigate("/tutorial");
-      }
+    if (token === null) {
+      navigate("/tutorial");
+    } else {
+      navigate("/main/home");
     }
-  }, [isLoading, navigate, user, code]);
+  }, [navigate]);
 
   return <></>;
 };

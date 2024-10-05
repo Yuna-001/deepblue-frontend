@@ -1,71 +1,29 @@
 import { FC } from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
 import Post from "./Post";
+import { fetchPosts } from "../../utils/api";
 
 const PostList: FC = () => {
-  const posts = [
-    {
-      id: "1",
-      title: "제목을 입력해주세요.제목을 입력해주세요.제목을 입력해주세요.",
-      content: "내용을 입력해주세요.내용을 입력해주세요.",
-      nickname: "닉네임입니다",
-      date: "2024-10-05",
-      like: 100000000,
-    },
-    {
-      id: "2",
-      title: "제목을 입력해주세요.",
-      content:
-        "내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.내용을 입력해주세요.",
-      nickname: "닉네임입니다",
-      date: "2024-10-05",
-      like: 10,
-    },
+  const { category, sort } = useParams();
 
-    {
-      id: "3",
-      title: "제목을 입력해주세요.",
-      content: "내용을 입력해주세요.내용을 입력해주세요.",
-      nickname: "닉네임입니다",
-      date: "2024-10-05",
-      like: 10,
-    },
-    {
-      id: "4",
-      title: "제목을 입력해주세요.",
-      content: "내용을 입력해주세요.내용을 입력해주세요.",
-      nickname: "닉네임입니다",
-      date: "2024-10-05",
-      like: 10,
-    },
-    {
-      id: "5",
-      title: "제목을 입력해주세요.",
-      content: "내용을 입력해주세요.내용을 입력해주세요.",
-      nickname: "닉네임입니다",
-      date: "2024-10-05",
-      like: 10,
-    },
-
-    {
-      id: "6",
-      title: "제목을 입력해주세요.",
-      content: "내용을 입력해주세요.내용을 입력해주세요.",
-      nickname: "닉네임입니다",
-      date: "2024-10-05",
-      like: 10,
-    },
-  ];
+  const { data: posts } = useQuery({
+    queryFn: () => fetchPosts(category, sort),
+    queryKey: ["posts", category, sort],
+    initialData: [],
+  });
 
   return (
     <ul className="flex flex-col gap-4">
-      {posts.map(({ id, title, content, nickname, date, like }) => (
+      {posts?.map(({ id, title, content, nickname, updated_at, likes }) => (
         <Post
           key={id}
           title={title}
           content={content}
-          nickname={nickname}
-          date={date}
-          like={like}
+          nickname={nickname || ""}
+          date={updated_at || ""}
+          likes={likes || 0}
         />
       ))}
     </ul>

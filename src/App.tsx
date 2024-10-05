@@ -1,10 +1,9 @@
-import "./App.css";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 import RootLayout from "./components/layout/RootLayout";
 import IntroPage from "./pages/onboarding/IntroPage";
@@ -17,9 +16,11 @@ import GuidePage from "./pages/onboarding/GuidePage";
 import MainNavigationLayout from "./components/layout/MainNavigationLayout";
 import HomePage from "./pages/main/HomePage";
 import RankingPage from "./pages/main/RankingPage";
-import DashBoardPage from "./pages/main/DashBoardPage";
+import DashboardPage from "./pages/main/DashBoardPage";
 import CommunityPage from "./pages/main/CommunityPage";
 import CommunityCategoryRedirect from "./pages/main/CommunityCategoryRedirect";
+
+import { queryClient } from "./utils/api";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,7 +40,16 @@ function App() {
           path: "tutorial",
           children: [
             { index: true, element: <GreetingPage /> },
-            { path: "questions", element: <QuestionPage /> },
+            {
+              path: "questions",
+              children: [
+                {
+                  index: true,
+                  element: <Navigate to="/tutorial/questions/0" />,
+                },
+                { path: ":questionIndex", element: <QuestionPage /> },
+              ],
+            },
             { path: "nickname-setting", element: <NicknameSettingPage /> },
             { path: "guide", element: <GuidePage /> },
           ],
@@ -55,7 +65,7 @@ function App() {
               children: [
                 {
                   index: true,
-                  element: <Navigate to="/main/communication/all/latest" />,
+                  element: <Navigate to="/main/communication/all/realtime" />,
                 },
                 {
                   path: ":category",
@@ -67,14 +77,12 @@ function App() {
               ],
             },
             { path: "ranking", element: <RankingPage /> },
-            { path: "dashboard", element: <DashBoardPage /> },
+            { path: "dashboard", element: <DashboardPage /> },
           ],
         },
       ],
     },
   ]);
-
-  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
