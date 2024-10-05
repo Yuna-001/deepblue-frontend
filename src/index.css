@@ -15,6 +15,10 @@
   }
 }
 
+#root {
+  @apply w-screen h-screen overflow-hidden;
+}
+
 .title1 {
   font-family: Pretendard;
   font-size: 32px;

@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import Header from "../../components/layout/Header";
 import QusetList from "../../components/home/QuestList";
 import TotalPoint from "../../components/home/TotalPoint";
-import RemainingTime from "../../components/home/RemainingTime";
+// import RemainingTime from "../../components/home/RemainingTime";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import { queryClient, resetQuests, submitDailyCheck } from "../../utils/api";
 

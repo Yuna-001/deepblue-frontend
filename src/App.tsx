@@ -1,10 +1,9 @@
-import "./App.css";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 
 import RootLayout from "./components/layout/RootLayout";
 import IntroPage from "./pages/onboarding/IntroPage";
