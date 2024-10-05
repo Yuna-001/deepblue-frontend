@@ -28,8 +28,6 @@ const RankingPage: FC = () => {
     queryKey: ["quests"],
   });
 
-  console.log(quests);
-
   const userTopPercent = rankers.find(
     (ranker) => ranker.nickname === user?.nickname,
   )?.top_percent;

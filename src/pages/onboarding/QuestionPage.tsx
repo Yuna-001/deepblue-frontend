@@ -10,6 +10,8 @@ import question2Img from "../../assets/images/onboarding/question2.svg";
 import question3Img from "../../assets/images/onboarding/question3.svg";
 import useSurveyScoreStore from "../../store/surveyScore";
 
+const IMAGE_LIST = [question1Img, question2Img, question3Img];
+
 // 뒤로 가기하면 점수를 리셋시키거나 필요한 만큼 빼는 로직 필요
 const QuestionPage: FC = () => {
   const navigate = useNavigate();
@@ -24,7 +26,6 @@ const QuestionPage: FC = () => {
   );
 
   const { question, answers } = questionsData[questionIdx];
-  const imgList = [question1Img, question2Img, question3Img];
 
   const handleAnswerClick = (point: number) => {
     increaseSurveyScore(point);
@@ -38,7 +39,7 @@ const QuestionPage: FC = () => {
   return (
     <OnboardingLayout withBackArrow>
       <div className="w-full flex flex-col items-center gap-7 pt-7">
-        <img src={imgList[questionIdx]} />
+        <img src={IMAGE_LIST[questionIdx]} />
         <h2 className="title3 h-16 py-auto text-navy-100 whitespace-pre-line text-center">
           {question}
         </h2>
