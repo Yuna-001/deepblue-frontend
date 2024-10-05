@@ -1,12 +1,23 @@
 import { FC } from "react";
 import Point from "./Point";
 import CompleteButton from "../buttons/CompleteButton";
+import { useMutation } from "@tanstack/react-query";
+import { completeQuest, queryClient } from "../../utils/api";
 
-const Quest: FC<{ title: string; point: number; isCompleted: boolean }> = ({
-  title,
-  point,
-  isCompleted,
-}) => {
+const Quest: FC<{
+  difficulty: string;
+  title: string;
+  point: number;
+  isCompleted: boolean;
+}> = ({ difficulty, title, point, isCompleted }) => {
+  const { mutate } = useMutation({
+    mutationFn: completeQuest,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["quests"] });
+      queryClient.invalidateQueries({ queryKey: ["userInfo"] });
+    },
+  });
+
   let classes =
     "h-24 w-full rounded-lg flex flex-col justify-between py-5 px-6 ";
 
@@ -18,8 +29,9 @@ const Quest: FC<{ title: string; point: number; isCompleted: boolean }> = ({
     classes += "bg-navy-700 text-navy-100";
   }
 
-  // 완료시 isCompleted true로 변경 (백엔드 전송 후 데이터 다시 받기)
-  const handleComplete = () => {};
+  const handleComplete = () => {
+    mutate(difficulty);
+  };
 
   return (
     <section className={classes}>

@@ -1,9 +1,13 @@
+import axios from "axios";
+import { QueryClient } from "@tanstack/react-query";
+
 import DashBoardInfoType from "../models/dashboardInfo";
 import PostType from "../models/posts";
 import QuestType from "../models/quest";
 import UserInfoType from "../models/userInfo";
 import UserRankingType from "../models/userRanking";
-import { get, post } from "./http";
+
+export const queryClient = new QueryClient();
 
 const getToken = () => {
   return localStorage.getItem("token");
@@ -11,29 +15,15 @@ const getToken = () => {
 
 /* 온보딩 */
 
-// export const fetchUser = async (code: string) => {
-//   const res = await post("https://api.diver-deepblue.app/google/login/", {
-//     code,
-//   });
-
-//   // 기존에 닉네임이나 설문 레벨을 세팅했는지
-//   return res as {
-//     token: string;
-//     has_nickname: boolean;
-//     has_survey_level: boolean;
-//   };
-// };
-
-// 이건 백엔드 api 다 작성되면 페이지랑 같이 수정하기
 export const checkIsDuplicatedNickname = async (nickname: string) => {
-  // const res = await get("", {
-  //   nickname,
-  // });
+  const res = await axios.get(
+    `https://api.diver-deepblue.app/nickname/${nickname}/`,
+  );
 
-  // return res.data;
-  return {};
+  return res.data;
 };
 
+// OK
 export const submitUserInfo = async ({
   surveyLevel,
   nickname,
@@ -43,69 +33,115 @@ export const submitUserInfo = async ({
 }) => {
   const data = { survey_level: surveyLevel, nickname };
 
-  const res = await post("https://api.diver-deepblue.app/userinfo/", data);
+  const res = await axios.post(
+    "https://api.diver-deepblue.app/userinfo/",
+    data,
+  );
 
-  localStorage.setItem("token", res.token);
+  localStorage.setItem("token", res.data.token);
 
-  return res;
+  return res.data;
 };
 
 /* 홈 */
 
 // 퀘스트리스트 초기화를 언제해야 하는지 논의 필요
+export const resetQuests = async () => {
+  const token = getToken();
+
+  const res = await axios.post(
+    "https://api.diver-deepblue.app/quests_list/",
+    {},
+    {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    },
+  );
+
+  return res.data;
+};
 
 export const submitDailyCheck = async () => {
   const token = getToken();
-  const res = await post("https://api.diver-deepblue.app/dailycheck/", {
-    token,
-  });
-  console.log(res);
-  return res;
+
+  const res = await axios.post(
+    "https://api.diver-deepblue.app/dailycheck/",
+    {},
+    {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    },
+  );
+
+  return res.data;
 };
 
+// OK
 export const fetchQuests = async () => {
   const token = getToken();
-  const res = await get("https://api.diver-deepblue.app/quests/", { token });
-  console.log(res);
 
-  return res as Array<QuestType>;
+  const res = await axios.get("https://api.diver-deepblue.app/quests/", {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+
+  return res.data as Array<QuestType>;
 };
 
+// OK
 export const fetchUserInfo = async () => {
   const token = getToken();
-  const res = await get("https://api.diver-deepblue.app/userInfo/", { token });
 
-  return res as UserInfoType;
+  const res = await axios.get("https://api.diver-deepblue.app/userinfo/", {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+
+  return res.data as UserInfoType;
 };
 
 /* 랭킹 */
 
+// OK
 export const fetchRanking = async () => {
   const token = getToken();
-  const res = await get("https://api.diver-deepblue.app/ranking/", { token });
+  const res = await axios.get("https://api.diver-deepblue.app/ranking/", {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
 
-  return res as Array<UserRankingType>;
+  return res.data as Array<UserRankingType>;
 };
 
 /* 대시보드 */
 
+// OK
 export const fetchDashboardInfo = async () => {
   const token = getToken();
-  const res = await post("https://api.diver-deepblue.app/dashboard/", {
-    token,
+
+  const res = await axios.get("https://api.diver-deepblue.app/dashboard/", {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
   });
-  console.log(res);
-  return res as DashBoardInfoType;
+
+  return res.data as DashBoardInfoType;
 };
 
 /* 커뮤니티 */
 
+// OK
 export const fetchPosts = async (
   category: string | undefined,
   type: string | undefined,
 ) => {
   const token = getToken();
-  const data = { category, type, token };
+  const data = { category, type };
 
   switch (category) {
     case "free":
@@ -123,7 +159,28 @@ export const fetchPosts = async (
 
   if (!type) type = "realtime";
 
-  const res = await get("https://api.diver-deepblue.app/posts/", data);
+  const res = await axios.get("https://api.diver-deepblue.app/posts/", {
+    params: data,
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
 
-  return res as Array<PostType>;
+  return res.data as Array<PostType>;
+};
+
+export const completeQuest = async (difficulty: string) => {
+  const token = getToken();
+
+  const res = await axios.patch(
+    `https://api.diver-deepblue.app/quests/${difficulty}/`,
+    {},
+    {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    },
+  );
+
+  return res.data;
 };

@@ -15,7 +15,8 @@ const QusetList: FC = () => {
     <div className="flex flex-col gap-6 pb-28 title4">
       {quests?.map(({ difficulty, content, score, is_cleared }) => (
         <Quest
-          key={difficulty}
+          key={score}
+          difficulty={difficulty}
           title={content}
           point={score}
           isCompleted={is_cleared}
