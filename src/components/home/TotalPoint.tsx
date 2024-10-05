@@ -1,14 +1,24 @@
 import { FC } from "react";
 
 import Point from "./Point";
+import { useQuery } from "@tanstack/react-query";
+import { fetchUserInfo } from "../../utils/api";
 
 const TotalPoint: FC = () => {
   // 백엔드에서 유저 총 포인트 받기
-  const userTotalPoint = 1000000;
+  const { data: userInfo } = useQuery({
+    queryFn: fetchUserInfo,
+    queryKey: ["userInfo"],
+    initialData: {
+      nickname: "",
+      score: 0,
+      user: "",
+    },
+  });
 
   return (
     <div className="bg-sky_blue-800 w-30 h-8 rounded-3xl py-1 px-2 flex justify-center text-navy-100">
-      <Point point={userTotalPoint} />
+      <Point point={userInfo?.score || 0} />
     </div>
   );
 };

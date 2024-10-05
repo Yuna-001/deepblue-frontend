@@ -8,7 +8,7 @@ import crown2Img from "../../assets/images/rank/crown2.svg";
 import crown3Img from "../../assets/images/rank/crown3.svg";
 
 type UserInRankingProps = {
-  ranking: number;
+  ranking: number | undefined;
   nickname: string;
   level: number;
   score: number;
@@ -20,6 +20,8 @@ const UserInRanking: FC<UserInRankingProps> = ({
   level,
   score,
 }) => {
+  if (!ranking) return;
+
   let rankingContent: JSX.Element;
 
   if (ranking === 1) {

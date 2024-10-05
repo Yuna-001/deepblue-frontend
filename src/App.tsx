@@ -17,7 +17,7 @@ import GuidePage from "./pages/onboarding/GuidePage";
 import MainNavigationLayout from "./components/layout/MainNavigationLayout";
 import HomePage from "./pages/main/HomePage";
 import RankingPage from "./pages/main/RankingPage";
-import DashBoardPage from "./pages/main/DashBoardPage";
+import DashboardPage from "./pages/main/DashBoardPage";
 import CommunityPage from "./pages/main/CommunityPage";
 import CommunityCategoryRedirect from "./pages/main/CommunityCategoryRedirect";
 
@@ -55,7 +55,7 @@ function App() {
               children: [
                 {
                   index: true,
-                  element: <Navigate to="/main/communication/all/latest" />,
+                  element: <Navigate to="/main/communication/all/realtime" />,
                 },
                 {
                   path: ":category",
@@ -67,7 +67,7 @@ function App() {
               ],
             },
             { path: "ranking", element: <RankingPage /> },
-            { path: "dashboard", element: <DashBoardPage /> },
+            { path: "dashboard", element: <DashboardPage /> },
           ],
         },
       ],
