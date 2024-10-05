@@ -28,19 +28,19 @@ const DashboardPage: FC = () => {
       <div className="h-full pb-20 pt-3 overflow-y-auto scrollbar-hidden">
         <div className="bg-navy-700 border border-navy-700 h-fit p-4 rounded-lg flex flex-col gap-3 ">
           <div className="flex flex-row items-center justify-between text-center ">
-            <div className="border-r-2 border-navy-600 w-full flex flex-col">
+            <div className="border-r-2 border-navy-600 w-full flex flex-col py-2">
               <h4 className="title4 text-navy-100">
                 {data?.cleared_quest_count || "N"}개
               </h4>
               <span className="body3 text-sky_blue-500">완료 퀘스트</span>
             </div>
-            <div className="border-r-2 border-navy-600 w-full  flex flex-col">
+            <div className="border-r-2 border-navy-600 w-full flex flex-col py-2">
               <h4 className="title4 text-navy-100">
                 {data?.total_cleared_day || "N"}일
               </h4>
               <span className="body3 text-sky_blue-500">누적 완료일</span>
             </div>
-            <div className="w-full flex flex-col">
+            <div className="w-full flex flex-col py-2">
               <h4 className="title4 text-navy-100">Lv {data?.level || "N"}</h4>
               <span className="body3 text-sky_blue-500">My 레벨</span>
             </div>

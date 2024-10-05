@@ -41,7 +41,7 @@ const UserInRanking: FC<UserInRankingProps> = ({
       {rankingContent}
       <div className="caption2 text-navy-300 w-36 text-center">{nickname}</div>
       <div className="text-navy-100 w-[60px] text-center">Lv{level}</div>
-      <div className="text-navy-100 flex flex-row w-28 gap-2 justify-start items-center">
+      <div className="text-navy-100 flex flex-row w-28 gap-2 justify-center items-center">
         <img src={polarPointImg} className="-mb-1" />
         {pointFormatting(score)}
       </div>

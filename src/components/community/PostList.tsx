@@ -19,7 +19,6 @@ const PostList: FC = () => {
       {posts?.map(({ id, title, content, nickname, updated_at, likes }) => (
         <Post
           key={id}
-          id={id}
           title={title}
           content={content}
           nickname={nickname || ""}

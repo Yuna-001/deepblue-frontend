@@ -1,5 +1,5 @@
-import { FC, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC, useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import questionsData from "../../assets/data/questions.json";
 import Answer from "../../components/buttons/Answer";
@@ -10,34 +10,26 @@ import question2Img from "../../assets/images/onboarding/question2.svg";
 import question3Img from "../../assets/images/onboarding/question3.svg";
 import useSurveyScoreStore from "../../store/surveyScore";
 
+// 뒤로 가기하면 점수를 리셋시키거나 필요한 만큼 빼는 로직 필요
 const QuestionPage: FC = () => {
   const navigate = useNavigate();
+  const { questionIndex } = useParams();
+  let questionIdx: number;
 
-  const imgList = useMemo(() => [question1Img, question2Img, question3Img], []);
+  if (questionIndex === undefined) questionIdx = 0;
+  else questionIdx = +questionIndex;
 
-  const [questionIndex, setQuestionIndex] = useState<number>(0);
-
-  const { question, answers } = useMemo(
-    () => questionsData[questionIndex],
-    [questionIndex],
+  const increaseSurveyScore = useSurveyScoreStore(
+    (state) => state.increaseSurveyScore,
   );
 
-  const { initializeSurveyScore, increaseSurveyScore } = useSurveyScoreStore(
-    (state) => ({
-      initializeSurveyScore: state.initializeSurveyScore,
-      increaseSurveyScore: state.increaseSurveyScore,
-    }),
-  );
+  const { question, answers } = questionsData[questionIdx];
+  const imgList = [question1Img, question2Img, question3Img];
 
-  if (questionIndex === 0) {
-    initializeSurveyScore();
-  }
-
-  const handelAnswerClick = (point: number) => {
+  const handleAnswerClick = (point: number) => {
     increaseSurveyScore(point);
-
-    if (questionIndex < questionsData.length - 2) {
-      setQuestionIndex((prevIndex) => prevIndex + 1);
+    if (questionIdx < questionsData.length - 1) {
+      navigate(`/tutorial/questions/${questionIdx + 1}`);
     } else {
       navigate("/tutorial/nickname-setting");
     }
@@ -46,7 +38,7 @@ const QuestionPage: FC = () => {
   return (
     <OnboardingLayout withBackArrow>
       <div className="w-full flex flex-col items-center gap-7 pt-7">
-        <img src={imgList[questionIndex]} />
+        <img src={imgList[questionIdx]} />
         <h2 className="title3 h-16 py-auto text-navy-100 whitespace-pre-line text-center">
           {question}
         </h2>
@@ -56,7 +48,7 @@ const QuestionPage: FC = () => {
           <Answer
             key={answer}
             text={answer}
-            onClick={() => handelAnswerClick(point)}
+            onClick={() => handleAnswerClick(point)}
           />
         ))}
       </ul>

@@ -39,7 +39,16 @@ function App() {
           path: "tutorial",
           children: [
             { index: true, element: <GreetingPage /> },
-            { path: "questions", element: <QuestionPage /> },
+            {
+              path: "questions",
+              children: [
+                {
+                  index: true,
+                  element: <Navigate to="/tutorial/questions/0" />,
+                },
+                { path: ":questionIndex", element: <QuestionPage /> },
+              ],
+            },
             { path: "nickname-setting", element: <NicknameSettingPage /> },
             { path: "guide", element: <GuidePage /> },
           ],
