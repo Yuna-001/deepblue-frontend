@@ -1,12 +1,14 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
+import { fetchQuests, fetchRanking, fetchUserInfo } from "../../utils/api";
 import Header from "../../components/layout/Header";
 import Button from "../../components/buttons/Button";
 import UserInRanking from "../../components/ranking/UserInRanking";
 import MainPageLayout from "../../components/layout/MainPageLayout";
-import { useQuery } from "@tanstack/react-query";
-import { fetchRanking, fetchUserInfo } from "../../utils/api";
+import roundPolarLogo from "../../assets/images/rank/round-polar-logo.svg";
+import starImg from "../../assets/images/rank/star.svg";
 
 const RankingPage: FC = () => {
   const navigate = useNavigate();
@@ -21,11 +23,21 @@ const RankingPage: FC = () => {
     queryKey: ["userInfo"],
   });
 
+  const { data: quests } = useQuery({
+    queryFn: fetchQuests,
+    queryKey: ["quests"],
+  });
+
+  console.log(quests);
+
   const userTopPercent = rankers.find(
     (ranker) => ranker.nickname === user?.nickname,
   )?.top_percent;
 
-  const showingUserTopPercent = Math.round(Number(userTopPercent || 0));
+  const showingUserTopPercent: number = Math.round(Number(userTopPercent || 0));
+  const isVisibleStar: boolean = showingUserTopPercent <= 30;
+  const isAllClear: boolean =
+    quests?.every(({ is_cleared }) => is_cleared === true) ?? false;
 
   const handleGoHome = () => {
     navigate("/main/home");
@@ -42,8 +54,22 @@ const RankingPage: FC = () => {
           <span className="text-sky_blue-500">{showingUserTopPercent}%</span>{" "}
           에요
         </h2>
-        <div className="w-[100px] min-h-[100px] max-h-[100px] bg-white rounded-full"></div>
-        <Button onClick={handleGoHome}>남은 퀘스트 하러 가기</Button>
+        <div className="relative">
+          <img
+            src={roundPolarLogo}
+            alt="딥블루 캐릭터 로고"
+            className="-z-10"
+          />
+          {isVisibleStar && (
+            <>
+              <img src={starImg} alt="별" className="absolute top-2 right-0" />
+              <img src={starImg} alt="별" className="absolute top-7 -right-4" />
+            </>
+          )}
+        </div>
+        <Button onClick={handleGoHome} disabled={isAllClear}>
+          {isAllClear ? "새로운 퀘스트 생성 중" : "남은 퀘스트 하러 가기"}
+        </Button>
 
         <ul className="w-full border border-navy-700 rounded-lg py-6 px-2 flex flex-col gap-5 h-fit overflow-y-auto scrollbar-hidden">
           {rankers?.map(({ ranking, nickname, level, score }) => (
