@@ -21,6 +21,8 @@ import DashboardPage from "./pages/main/DashBoardPage";
 import CommunityPage from "./pages/main/CommunityPage";
 import CommunityCategoryRedirect from "./pages/main/CommunityCategoryRedirect";
 
+import { queryClient } from "./utils/api";
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -82,8 +84,6 @@ function App() {
       ],
     },
   ]);
-
-  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
