@@ -37,7 +37,7 @@ const CommunityPage: FC = () => {
         <div className="h-full overflow-y-auto scrollbar-hidden pb-16">
           <div className="pb-16">
             <nav className="w-full flex flex-row justify-start gap-2 my-5">
-              <CommunitySortButton category={category} sort="latest">
+              <CommunitySortButton category={category} sort="realtime">
                 <ClockIcon />
                 <div className="body2">실시간</div>
               </CommunitySortButton>

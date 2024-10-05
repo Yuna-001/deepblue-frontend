@@ -3,12 +3,26 @@ import { FC, ChangeEvent, useEffect, useState } from "react";
 import OnboardingLayout from "../../components/layout/OnboardingLayout";
 import Button from "../../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { checkIsDuplicatedNickname, submitUserInfo } from "../../utils/api";
+import useSurveyScoreStore from "../../store/surveyScore";
 
 const NicknameSettingPage: FC = () => {
   const [nickname, setNickname] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [disabled, setDisabled] = useState<boolean>(true);
   const [hasChanged, setHasChanged] = useState<boolean>(false);
+
+  const surveyScore = useSurveyScoreStore((state) => state.surveyScore);
+
+  const { mutate: mutateUserInfo } = useMutation({
+    mutationFn: submitUserInfo,
+  });
+
+  // const { mutate: mutateNicknameCheck,isError } = useMutation({
+  //   mutationFn: checkIsDuplicatedNickname,
+  //   onSuccess: ()=>setDisabled(false)
+  // });
 
   let inputFieldClasses =
     "h-12 w-full bg-navy-800 body1 text-navy-100 outline-none text-center rounded-lg border ";
@@ -30,7 +44,17 @@ const NicknameSettingPage: FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    // 백엔드로 전송
+    let surveyLevel: number;
+
+    if (surveyScore > 5) {
+      surveyLevel = 1;
+    } else if (surveyScore > 2) {
+      surveyLevel = 2;
+    } else {
+      surveyLevel = 3;
+    }
+
+    mutateUserInfo({ surveyLevel, nickname });
 
     navigate("/tutorial/guide");
   };
@@ -50,6 +74,8 @@ const NicknameSettingPage: FC = () => {
         setDisabled(true);
       } else {
         // 백엔드에서 받기
+        // mutateNicknameCheck(nickname);
+
         const isDuplicated = false;
 
         if (isDuplicated) {

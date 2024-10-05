@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 
 import questionsData from "../../assets/data/questions.json";
@@ -8,29 +8,38 @@ import OnboardingLayout from "../../components/layout/OnboardingLayout";
 import question1Img from "../../assets/images/onboarding/question1.svg";
 import question2Img from "../../assets/images/onboarding/question2.svg";
 import question3Img from "../../assets/images/onboarding/question3.svg";
+import useSurveyScoreStore from "../../store/surveyScore";
 
 const QuestionPage: FC = () => {
   const navigate = useNavigate();
 
-  const imgList = [question1Img, question2Img, question3Img];
+  const imgList = useMemo(() => [question1Img, question2Img, question3Img], []);
 
   const [questionIndex, setQuestionIndex] = useState<number>(0);
-  const [hikikomoriScore, setHikikomoriScore] = useState<number>(0);
 
-  const { question, answers } = questionsData[questionIndex];
+  const { question, answers } = useMemo(
+    () => questionsData[questionIndex],
+    [questionIndex],
+  );
+
+  const { initializeSurveyScore, increaseSurveyScore } = useSurveyScoreStore(
+    (state) => ({
+      initializeSurveyScore: state.initializeSurveyScore,
+      increaseSurveyScore: state.increaseSurveyScore,
+    }),
+  );
+
+  if (questionIndex === 0) {
+    initializeSurveyScore();
+  }
 
   const handelAnswerClick = (point: number) => {
-    setHikikomoriScore((pervScore) => pervScore + point);
+    increaseSurveyScore(point);
 
-    if (questionIndex === questionsData.length - 1) {
-      const updatedScore = hikikomoriScore + point;
-
-      // updatedScore를 백엔드로 전송
-      console.log(updatedScore);
-
-      navigate("/tutorial/nickname-setting");
-    } else {
+    if (questionIndex < questionsData.length - 2) {
       setQuestionIndex((prevIndex) => prevIndex + 1);
+    } else {
+      navigate("/tutorial/nickname-setting");
     }
   };
 
@@ -47,7 +56,7 @@ const QuestionPage: FC = () => {
           <Answer
             key={answer}
             text={answer}
-            onClick={() => handelAnswerClick(point + 1)}
+            onClick={() => handelAnswerClick(point)}
           />
         ))}
       </ul>

@@ -9,7 +9,7 @@ const CallbackPage: FC = () => {
   const [searchParams] = useSearchParams();
   const code = searchParams.get("code");
 
-  const { data: user, isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryFn: () => fetchUser(code as string),
     queryKey: ["user-auth"],
   });
@@ -17,18 +17,17 @@ const CallbackPage: FC = () => {
   if (!code) navigate("/auth");
 
   useEffect(() => {
-    if (!isLoading && user) {
-      const { accessToken, isExistingMember } = user;
+    if (!isLoading && data) {
+      const { token, has_nickname, has_survey_level } = data;
 
-      localStorage.setItem("accessToken", accessToken);
-
-      if (isExistingMember) {
+      if (has_nickname && has_survey_level) {
+        localStorage.setItem("token", token);
         navigate("/main/home");
       } else {
         navigate("/tutorial");
       }
     }
-  }, [isLoading, navigate, user, code]);
+  }, [data, isLoading, navigate]);
 
   return <></>;
 };
