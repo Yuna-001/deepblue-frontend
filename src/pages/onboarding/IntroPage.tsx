@@ -31,7 +31,7 @@ const IntroPage: FC = () => {
 
   return (
     <OnboardingLayout>
-      <div className="flex flex-col items-center gap-3">
+      <div className="flex flex-col items-center gap-3 justify-center h-full w-full pb-20">
         <h3 className="title2 w-full text-navy-100 whitespace-pre-line text-center pb-2">
           {TEXT_LIST[index]}
         </h3>
@@ -46,7 +46,7 @@ const IntroPage: FC = () => {
         </div>
       </div>
       <Button onClick={handleClick} isOnboarding>
-        다음
+        {index === TEXT_LIST.length - 1 ? "시작하기" : "다음"}
       </Button>
     </OnboardingLayout>
   );

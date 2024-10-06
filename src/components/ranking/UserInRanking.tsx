@@ -37,7 +37,7 @@ const UserInRanking: FC<UserInRankingProps> = ({
   }
 
   return (
-    <li className="flex flex-row items-center">
+    <li className="flex flex-row items-center justify-between">
       {rankingContent}
       <div className="caption2 text-navy-300 w-36 text-center">{nickname}</div>
       <div className="text-navy-100 w-[60px] text-center">Lv{level}</div>

@@ -34,7 +34,7 @@ const RemainingTime: FC = () => {
   }, []);
 
   return (
-    <div className="body1 text-navy-100 flex flex-row gap-2 items-center">
+    <div className="body1 text-navy-100 flex flex-row flex-start gap-2 items-center w-[132px]">
       <div>남은 시간</div>
       <div>{timeRemaining}</div>
     </div>

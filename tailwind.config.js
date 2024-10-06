@@ -14,22 +14,10 @@ export default {
         pc: "url('./assets/images/bg/pc-bg.png')",
       },
       width: {
-        web_basic: "360px",
+        pc_basic: "360px",
       },
       height: {
-        web_basic: "640px",
-      },
-      minWidth: {
-        min_width: "360px",
-      },
-      minHeight: {
-        min_height: "640px",
-      },
-      maxWidth: {
-        max_width: "360px",
-      },
-      maxHeight: {
-        max_height: "640px",
+        pc_basic: "640px",
       },
       colors: {
         navy: {
