@@ -23,7 +23,7 @@ const RootLayout: FC = () => {
 
   return (
     <div className="w-full h-full bg-pc bg-cover bg-center overflow-hidden flex justify-center items-center box-border">
-      <main className="w-full max-w-max_width h-full max-h-max_height bg-navy-800 relative overflow-hidden">
+      <main className="w-full h-full max-w-full max-h-full bg-navy-800 relative overflow-hidden md:w-pc_basic md:h-pc_basic">
         {isRevisit ? <Outlet /> : <SplashPage />}
       </main>
     </div>
