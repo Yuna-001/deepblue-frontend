@@ -13,7 +13,7 @@ const NicknameSettingPage: FC = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
   const [hasChanged, setHasChanged] = useState<boolean>(false);
 
-  const surveyScore = useSurveyScoreStore((state) => state.surveyScore);
+  const surveyScores = useSurveyScoreStore((state) => state.surveyScores);
 
   const { mutate: mutateUserInfo } = useMutation({
     mutationFn: submitUserInfo,
@@ -56,11 +56,16 @@ const NicknameSettingPage: FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
+    const totalSurvveyScore = surveyScores.reduce(
+      (total, score) => total + score,
+      0,
+    );
+
     let surveyLevel: number;
 
-    if (surveyScore > 5) {
+    if (totalSurvveyScore > 5) {
       surveyLevel = 1;
-    } else if (surveyScore > 2) {
+    } else if (totalSurvveyScore > 2) {
       surveyLevel = 2;
     } else {
       surveyLevel = 3;
