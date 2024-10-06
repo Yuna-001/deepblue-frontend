@@ -21,14 +21,12 @@ const QuestionPage: FC = () => {
   if (questionIndex === undefined) questionIdx = 0;
   else questionIdx = +questionIndex;
 
-  const increaseSurveyScore = useSurveyScoreStore(
-    (state) => state.increaseSurveyScore,
-  );
+  const setSurveyScore = useSurveyScoreStore((state) => state.setSurveyScore);
 
   const { question, answers } = questionsData[questionIdx];
 
   const handleAnswerClick = (point: number) => {
-    increaseSurveyScore(point);
+    setSurveyScore(questionIdx, point);
     if (questionIdx < questionsData.length - 1) {
       navigate(`/tutorial/questions/${questionIdx + 1}`);
     } else {
