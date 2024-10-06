@@ -20,7 +20,7 @@ const DashboardPage: FC = () => {
     },
   });
 
-  const showingAvgQuest: string = data.avg_week_cleared_quest.toFixed(2);
+  const showingAvgQuest: string = data.avg_week_cleared_quest.toFixed(1);
 
   return (
     <MainPageLayout>
