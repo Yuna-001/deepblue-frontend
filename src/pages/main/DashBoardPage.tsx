@@ -20,15 +20,15 @@ const DashboardPage: FC = () => {
     },
   });
 
-  const showingAvgQuest: string = data.avg_week_cleared_quest.toFixed(2);
+  const showingAvgQuest: string = data.avg_week_cleared_quest.toFixed(1);
 
   return (
     <MainPageLayout>
       <Header>
         <h1 className="title3 text-navy-100">대시보드</h1>
       </Header>
-      <div className="h-full pb-20 pt-3 overflow-y-auto scrollbar-hidden">
-        <div className="bg-navy-700 border border-navy-700 h-fit p-4 rounded-lg flex flex-col gap-3 ">
+      <div className="h-full w-full pb-20 pt-3 overflow-y-auto scrollbar-hidden flex flex-col justify-center">
+        <div className="bg-navy-700 border border-navy-700 h-fit p-4 rounded-lg flex flex-col gap-3">
           <div className="flex flex-row items-center justify-between text-center ">
             <div className="border-r-2 border-navy-600 w-full flex flex-col py-2">
               <h4 className="title4 text-navy-100">
@@ -49,7 +49,7 @@ const DashboardPage: FC = () => {
           </div>
 
           <div className="bg-navy-800 flex flex-col items-center py-7 px-6 gap-6 rounded-lg">
-            <h4 className="title4 text-navy-100">
+            <h4 className="title4 text-navy-100 text-center">
               최근 일주일간{" "}
               <span className="text-point_color-mint">
                 평균 {showingAvgQuest}건
