@@ -1,50 +1,149 @@
-# React + TypeScript + Vite
+# 딥블루
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br/>
 
-Currently, two official plugins are available:
+## 프로젝트 소개
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**은둔형 외톨이를 위한 동기 부여 서비스**
 
-## Expanding the ESLint configuration
+<br/>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 프로젝트 진행 기간
 
-- Configure the top-level `parserOptions` property like this:
+2024.09.27 ~ 2024.10.06
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+<br/>
+
+## 디렉토리 구조
+
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+src/
+├── assets/
+│   ├── data/   : 데이터 파일 보관
+│   └── image/  : 로고, 배경 이미지, 아이콘 등 보관
+├── components/
+│   ├── buttons/    : 다양한 버튼 컴포넌트 보관
+│   ├── community/  : 커뮤니티 페이지 컴포넌트 보관
+│   ├── home/       : 홈 페이지에서 사용하는 컴포넌트 보관
+│   ├── icons/      : SVG 아이콘을 반환하는 컴포넌트 보관
+│   ├── layout/     : 레이아웃 관련 컴포넌트(헤더, 내비게이션 등) 보관
+│   └── ranking/    : 랭킹 페이지 컴포넌트 보관
+├── models/         : TypeScript 타입 정의 및 모델 보관
+├── pages/
+│   ├── onboarding/   : 온보딩 페이지 컴포넌트 보관 (홈 화면 이전)
+│   └── main/         : 홈, 커뮤니티, 랭킹, 대시보드 페이지 컴포넌트 보관
+├── store/    : Zustand 상태 관리 스토어 보관
+└── utils/    : API 호출 함수 및 데이터 포매팅 유틸리티 함수 보관
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+
+<br/>
+
+## 주요 기능
+
+### ✅ 스플래시 및 인트로 화면
+
+- **스플래시 화면**: 앱 실행 시 첫 화면으로 이미지와 로고가 표시됩니다.
+- **인트로 화면**: 앱에 대한 간단한 소개가 나타난 후, Google 로그인 버튼이 포함된 화면으로 전환됩니다.
+
+### ✅ 기존 사용자 여부에 따라 화면 이동
+
+- 기존 사용자는 로그인 시 자동으로 홈 화면으로 이동합니다.
+- 새로운 사용자는 안내 화면으로 이동하여 초기 설정 절차를 진행합니다.
+
+### ✅ 설문조사 기반 맞춤형 퀘스트 제공
+
+- 설문조사 질문에 대한 답변을 기반으로 점수가 계산되며, 사용자는 설문 종료 후 닉네임을 설정합니다.
+- 설문 점수를 바탕으로 사용자의 레벨이 결정되고, 레벨에 맞는 퀘스트가 제공됩니다.
+- 퀘스트는 홈 화면에서 볼 수 있습니다.
+
+### ✅ 퀘스트 완료를 통한 포인트 획득
+
+- 각 퀘스트에는 완료 버튼이 있으며, 클릭 시 퀘스트의 완료 상태와 포인트가 실시간으로 업데이트됩니다.
+
+### ✅ 랭킹
+
+- 전체 유저의 포인트 랭킹을 확인할 수 있습니다.
+- 상위 30% 이내에 속한 유저는 캐릭터 옆에 별 이미지를 추가로 표시하여 상위 유저임을 강조합니다.
+- 1~3위의 유저는 랭킹 리스트에서 왕관 모양의 아이콘으로 등수를 표시합니다.
+- 사용자 아직 완료하지 않은 퀘스트가 있을 경우 해당 퀘스트로 바로 이동할 수 있는 버튼이 제공되며, 완료된 경우 버튼이 비활성화됩니다.
+
+### ✅ 대시보드
+
+- 유저의 총 완료 퀘스트 수, 누적 완료일, 레벨(포인트 기반), 일주일 간 출석 현황과 평균 퀘스트 완료 수를 확인할 수 있습니다.
+
+### ✅ 게시물 보기
+
+- 사용자가 카테고리 또는 정렬 옵션을 변경할 때마다 서버로부터 게시물 데이터를 가져와 카테고리 및 정렬에 맞춘 게시물 목록을 실시간으로 갱신합니다.
+
+<br/>
+
+## 미구현 기능
+
+- 구글 로그인 (현재 localStorage를 사용하여 임시로 로그인 기능이 구현된 상태입니다.)
+- 일주일 간의 퀘스트 완료 통계를 차트로 보여주기
+- 게시물 작성 및 검색
+- 게시물에 댓글 및 좋아요 기능
+
+<br/>
+
+## 링크
+
+- [딥블루 서비스 배포 링크](https://deepblue.netlify.app/)
+- [백엔드 레포지토리](https://github.com/potenday-409TEN009/deepblue-backend)
+
+<br/>
+
+## 개발 도구
+
+- **언어**: TypeScript
+- **프레임워크**: React
+- **빌드 도구**: Vite
+- **상태 관리**: Zustand
+- **스타일링**: Tailwind CSS
+- **데이터 통신**: Axios, React Query
+- **라우팅**: React Router
+- **코드 품질 관**: ESlint, Prettier
+- **IDE**: Visual Studio Code
+- **배포**: Netlify
+
+<br/>
+
+## 설치 및 실행 방법
+
+1. **레포지토리 클론**
+
+   ```bash
+   git clone https://github.com/potenday-409TEN009/deepblue-frontend.git
+   ```
+
+2. **의존성 설치**
+
+   ```bash
+   npm install
+   ```
+
+3. **환경 변수 설정**
+
+   `.env` 파일을 생성하고 다음을 추가합니다:
+
+   ```
+   VITE_GOOGLE_CLIENT_ID = 본인의 구글 클라이언트 아이디
+   VITE_GOOGLE_AUTH_REDIRECT_URI = 구글 로그인 후 돌아갈 페이지 주소
+   ```
+
+4. **개발 서버 실행**
+
+   ```bash
+   npm run dev
+   ```
+
+<br/>
+
+## 향후 작업 계획
+
+**[개인 레포지토리](https://github.com/Yuna-001/deepblue-frontend)에서 진행 예정**
+
+- 컴포넌트 세분화 작업
+- 모바일에서 주소창으로 인해 브라우저 화면보다 앱 화면이 더 커지는 문제 해결
