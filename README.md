@@ -8,6 +8,12 @@
 
 <br/>
 
+## 시연 영상
+
+![딥블루 시연 영상](https://github.com/user-attachments/assets/efe5f5cd-304c-4820-bd00-37c6e00f5136)
+
+<br/>
+
 ## 프로젝트 진행 기간
 
 2024.09.27 ~ 2024.10.06
@@ -104,7 +110,7 @@ src/
 - **스타일링**: Tailwind CSS
 - **데이터 통신**: Axios, React Query
 - **라우팅**: React Router
-- **코드 품질 관**: ESlint, Prettier
+- **코드 품질 관리**: ESlint, Prettier
 - **IDE**: Visual Studio Code
 - **배포**: Netlify
 
