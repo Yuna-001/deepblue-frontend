@@ -85,15 +85,6 @@ src/
 
 <br/>
 
-## 미구현 기능
-
-- 구글 로그인 (현재 localStorage를 사용하여 임시로 로그인 기능이 구현된 상태입니다.)
-- 일주일 간의 퀘스트 완료 통계를 차트로 보여주기
-- 게시물 작성 및 검색
-- 게시물에 댓글 및 좋아요 기능
-
-<br/>
-
 ## 링크
 
 - [딥블루 서비스 배포 링크](https://deepblue.netlify.app/)
@@ -130,16 +121,7 @@ src/
    npm install
    ```
 
-3. **환경 변수 설정**
-
-   `.env` 파일을 생성하고 다음을 추가합니다:
-
-   ```
-   VITE_GOOGLE_CLIENT_ID = 본인의 구글 클라이언트 아이디
-   VITE_GOOGLE_AUTH_REDIRECT_URI = 구글 로그인 후 돌아갈 페이지 주소
-   ```
-
-4. **개발 서버 실행**
+3. **개발 서버 실행**
 
    ```bash
    npm run dev
@@ -149,7 +131,4 @@ src/
 
 ## 향후 작업 계획
 
-**[개인 레포지토리](https://github.com/Yuna-001/deepblue-frontend)에서 진행 예정**
-
-- 컴포넌트 세분화 작업
-- 모바일에서 주소창으로 인해 브라우저 화면보다 앱 화면이 더 커지는 문제 해결
+**[개인 레포지토리](https://github.com/Yuna-001/deepblue-frontend)에서 리팩토링 진행 예정**
