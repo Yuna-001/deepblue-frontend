@@ -1,16 +1,21 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/buttons/Button";
 import googleLogoImg from "../../assets/images/onboarding/google-logo.png";
 import OnboardingLayout from "../../components/layout/OnboardingLayout";
 
 const AuthPage: FC = () => {
+  const navigate = useNavigate();
+
   const handleLogin = () => {
-    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?
-		client_id=${import.meta.env.VITE_GOOGLE_CLIENT_ID}
-		&redirect_uri=${import.meta.env.VITE_GOOGLE_AUTH_REDIRECT_URI}
-		&response_type=code
-		&scope=email`;
+    // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?
+    // client_id=${import.meta.env.VITE_GOOGLE_CLIENT_ID}
+    // &redirect_uri=${import.meta.env.VITE_GOOGLE_AUTH_REDIRECT_URI}
+    // &response_type=code
+    // &scope=email`;
+
+    navigate("/auth/callback");
   };
 
   return (
