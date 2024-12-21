@@ -5,14 +5,15 @@ import Button from "../../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { submitUserInfo } from "../../utils/api";
-import useSurveyScoreStore from "../../store/surveyScore";
 import useNicknameValidation from "../../hooks/useNicknameValidation";
+import useSurveyLevel from "../../hooks/useSurveyLevel";
 
 const NicknameSettingPage: FC = () => {
-  const surveyScores = useSurveyScoreStore((state) => state.surveyScores);
-
   const { nickname, disabled, message, setNickname, validateNickname } =
     useNicknameValidation();
+  const { calculateSurveyLevel } = useSurveyLevel();
+
+  const navigate = useNavigate();
 
   const { mutate: mutateUserInfo } = useMutation({
     mutationFn: submitUserInfo,
@@ -35,26 +36,9 @@ const NicknameSettingPage: FC = () => {
     messageClasses += "text-point_color-mint";
   }
 
-  const navigate = useNavigate();
-
   const handleSubmit = () => {
-    const totalSurvveyScore = surveyScores.reduce(
-      (total, score) => total + score,
-      0,
-    );
-
-    let surveyLevel: number;
-
-    if (totalSurvveyScore > 5) {
-      surveyLevel = 1;
-    } else if (totalSurvveyScore > 2) {
-      surveyLevel = 2;
-    } else {
-      surveyLevel = 3;
-    }
-
+    const surveyLevel = calculateSurveyLevel();
     mutateUserInfo({ surveyLevel, nickname });
-
     navigate("/tutorial/guide");
   };
 
