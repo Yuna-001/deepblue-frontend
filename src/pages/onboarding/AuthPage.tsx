@@ -15,7 +15,13 @@ const AuthPage: FC = () => {
     // &response_type=code
     // &scope=email`;
 
-    navigate("/auth/callback");
+    const token = localStorage.getItem("token");
+
+    if (token === null) {
+      navigate("/tutorial");
+    } else {
+      navigate("/main/home");
+    }
   };
 
   return (

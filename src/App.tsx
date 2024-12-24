@@ -9,7 +9,6 @@ import RootLayout from "./components/layout/RootLayout";
 import IntroPage from "./pages/onboarding/IntroPage";
 import QuestionPage from "./pages/onboarding/QuestionPage";
 import AuthPage from "./pages/onboarding/AuthPage";
-import CallbackPage from "./pages/onboarding/CallbackPage";
 import NicknameSettingPage from "./pages/onboarding/NicknameSettingPage";
 import GreetingPage from "./pages/onboarding/GreetingPage";
 import GuidePage from "./pages/onboarding/GuidePage";
@@ -31,10 +30,7 @@ function App() {
         { index: true, element: <IntroPage /> },
         {
           path: "auth",
-          children: [
-            { index: true, element: <AuthPage /> },
-            { path: "callback", element: <CallbackPage /> },
-          ],
+          element: <AuthPage />,
         },
         {
           path: "tutorial",
