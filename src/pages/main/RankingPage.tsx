@@ -9,6 +9,7 @@ import UserInRanking from "../../components/ranking/UserInRanking";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import roundPolarLogo from "../../assets/images/rank/round-polar-logo.svg";
 import starImg from "../../assets/images/rank/star.svg";
+import RankingList from "../../components/ranking/RankingList";
 
 const RankingPage: FC = () => {
   const navigate = useNavigate();
@@ -69,17 +70,7 @@ const RankingPage: FC = () => {
           {isAllClear ? "새로운 퀘스트 생성 중" : "남은 퀘스트 하러 가기"}
         </Button>
 
-        <ul className="w-full border border-navy-700 rounded-lg py-6 px-2 flex flex-col gap-5 h-fit overflow-y-auto scrollbar-hidden">
-          {rankers?.map(({ ranking, nickname, level, score }) => (
-            <UserInRanking
-              key={nickname}
-              nickname={nickname}
-              ranking={ranking}
-              level={level}
-              score={score}
-            />
-          ))}
-        </ul>
+        <RankingList rankers={rankers} />
       </div>
     </MainPageLayout>
   );
