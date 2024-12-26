@@ -1,23 +1,18 @@
-import { FC } from "react";
 import { useParams } from "react-router-dom";
 
-import Header from "../../components/layout/Header";
-import searchIcon from "../../assets/images/community/search.svg";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import PostList from "../../components/community/PostList";
 import CategoryNavigation from "../../components/community/CategoryNavigation";
 import SortNavigation from "../../components/community/SortNavigation";
+import CommunityHeader from "../../components/community/CommunityHeader";
 
-const CommunityPage: FC = () => {
+const CommunityPage = () => {
   const { category, sort } = useParams();
 
   return (
     <>
       <div>
-        <Header>
-          <h1 className="title3 text-navy-100 pl-4">커뮤니티</h1>
-          <img src={searchIcon} className="mr-1" />
-        </Header>
+        <CommunityHeader />
         <CategoryNavigation sort={sort} />
       </div>
 
