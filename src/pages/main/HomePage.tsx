@@ -1,12 +1,12 @@
 import { FC, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import Header from "../../components/layout/Header";
 import QusetList from "../../components/home/QuestList";
 import TotalPoint from "../../components/home/TotalPoint";
 import RemainingTime from "../../components/home/RemainingTime";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import { queryClient, resetQuests, submitDailyCheck } from "../../utils/api";
+import MainHeader from "../../components/layout/MainHeader";
 
 const HomePage: FC = () => {
   const { mutate: mutateDailyCheck } = useMutation({
@@ -27,9 +27,7 @@ const HomePage: FC = () => {
 
   return (
     <MainPageLayout>
-      <Header>
-        <h1 className="title3 text-navy-100">홈</h1>
-      </Header>
+      <MainHeader title="홈" />
       <div className="flex flex-row justify-between">
         <TotalPoint />
         <RemainingTime />

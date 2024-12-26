@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchQuests, fetchRanking, fetchUserInfo } from "../../utils/api";
-import Header from "../../components/layout/Header";
 import Button from "../../components/buttons/Button";
-import UserInRanking from "../../components/ranking/UserInRanking";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import roundPolarLogo from "../../assets/images/rank/round-polar-logo.svg";
 import starImg from "../../assets/images/rank/star.svg";
 import RankingList from "../../components/ranking/RankingList";
+import MainHeader from "../../components/layout/MainHeader";
 
 const RankingPage: FC = () => {
   const navigate = useNavigate();
@@ -44,9 +43,7 @@ const RankingPage: FC = () => {
 
   return (
     <MainPageLayout>
-      <Header>
-        <h1 className="title3 text-navy-100">랭킹</h1>
-      </Header>
+      <MainHeader title="랭킹" />
       <div className="w-full flex flex-col items-center gap-7 h-full pb-14">
         <h2 className="title3 text-navy-100">
           현재까지 상위{" "}

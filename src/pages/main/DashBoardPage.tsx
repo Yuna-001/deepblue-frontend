@@ -1,11 +1,11 @@
 import { FC } from "react";
 
-import Header from "../../components/layout/Header";
 import graphImg from "../../assets/images/dashboard/graph.svg";
 import winkPolarImg from "../../assets/images/dashboard/wink-polar.svg";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import { fetchDashboardInfo } from "../../utils/api";
 import { useQuery } from "@tanstack/react-query";
+import MainHeader from "../../components/layout/MainHeader";
 
 const DashboardPage: FC = () => {
   const { data } = useQuery({
@@ -24,9 +24,7 @@ const DashboardPage: FC = () => {
 
   return (
     <MainPageLayout>
-      <Header>
-        <h1 className="title3 text-navy-100">대시보드</h1>
-      </Header>
+      <MainHeader title="대시보드" />
       <div className="h-full w-full pb-20 pt-3 overflow-y-auto scrollbar-hidden flex flex-col justify-center">
         <div className="bg-navy-700 border border-navy-700 h-fit p-4 rounded-lg flex flex-col gap-3">
           <div className="flex flex-row items-center justify-between text-center ">
