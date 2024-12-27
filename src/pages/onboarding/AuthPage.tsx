@@ -1,23 +1,7 @@
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
-
-import Button from "../../components/buttons/Button";
-import googleLogoImg from "../../assets/images/onboarding/google-logo.png";
+import GoogleLoginButton from "../../components/buttons/GoogleLoginButton";
 import OnboardingLayout from "../../components/layout/OnboardingLayout";
 
-const AuthPage: FC = () => {
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    // window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?
-    // client_id=${import.meta.env.VITE_GOOGLE_CLIENT_ID}
-    // &redirect_uri=${import.meta.env.VITE_GOOGLE_AUTH_REDIRECT_URI}
-    // &response_type=code
-    // &scope=email`;
-
-    navigate("/auth/callback");
-  };
-
+const AuthPage = () => {
   return (
     <div className="h-full w-full bg-auth bg-cover bg-no-repeat">
       <OnboardingLayout>
@@ -29,12 +13,7 @@ const AuthPage: FC = () => {
             <br /> 동기부여 커뮤니티
           </h1>
         </div>
-        <Button onClick={handleLogin} isLoginButton isOnboarding>
-          <div className="flex flex-row justify-center gap-2">
-            <img src={googleLogoImg} alt="구글 로고" />
-            <div>Google 계정으로 계속하기</div>
-          </div>
-        </Button>
+        <GoogleLoginButton />
       </OnboardingLayout>
     </div>
   );

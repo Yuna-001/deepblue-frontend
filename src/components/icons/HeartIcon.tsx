@@ -1,12 +1,15 @@
-import { FC } from "react";
+import { useState } from "react";
 
-const HearIcon: FC<{ isActive: boolean; onClick: () => void }> = ({
-  isActive,
-  onClick,
-}) => {
+const HearIcon = () => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setIsActive((prevState) => !prevState);
+  };
+
   return (
     <svg
-      onClick={onClick}
+      onClick={handleClick}
       width="24"
       height="24"
       viewBox="0 0 24 24"

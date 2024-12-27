@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import HearIcon from "../icons/HeartIcon";
+import { FC } from "react";
+import HeartIcon from "../icons/HeartIcon";
 
 type PostProps = {
   title: string;
@@ -11,14 +11,9 @@ type PostProps = {
 
 const Post: FC<PostProps> = ({ title, content, nickname, date, likes }) => {
   const showingLike = likes < 1000 ? likes.toString() : "999+";
-  const [likeIsActive, setLikeIsActive] = useState<boolean>(false);
 
   if (title.length > 13) title = title.slice(0, 13) + "...";
   if (content.length > 55) content = content.slice(0, 55) + "...";
-
-  const onClickLike = () => {
-    setLikeIsActive((prevState) => !prevState);
-  };
 
   return (
     <li className="w-full h-[150px] flex flex-col gap-3 bg-navy-800 border border-navy-700 rounded-lg px-4 pt-4 pb-2">
@@ -32,7 +27,7 @@ const Post: FC<PostProps> = ({ title, content, nickname, date, likes }) => {
       <div className="flex flex-row justify-between">
         <div className="caption2 text-navy-300">{nickname}</div>
         <div className="flex flex-row items-center caption1 text-navy-100 transition-all duration-1000">
-          <HearIcon isActive={likeIsActive} onClick={onClickLike} />
+          <HeartIcon />
           <div className="pb-[1px]">{showingLike}</div>
         </div>
       </div>

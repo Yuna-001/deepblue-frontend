@@ -1,13 +1,13 @@
-import { FC } from "react";
-
-import Header from "../../components/layout/Header";
 import graphImg from "../../assets/images/dashboard/graph.svg";
 import winkPolarImg from "../../assets/images/dashboard/wink-polar.svg";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import { fetchDashboardInfo } from "../../utils/api";
 import { useQuery } from "@tanstack/react-query";
+import MainHeader from "../../components/layout/MainHeader";
+import StatCard from "../../components/dashboard/StatCard";
+import WeeklyActivity from "../../components/dashboard/WeeklyActivity";
 
-const DashboardPage: FC = () => {
+const DashboardPage = () => {
   const { data } = useQuery({
     queryFn: fetchDashboardInfo,
     queryKey: ["dashboard"],
@@ -24,52 +24,42 @@ const DashboardPage: FC = () => {
 
   return (
     <MainPageLayout>
-      <Header>
-        <h1 className="title3 text-navy-100">대시보드</h1>
-      </Header>
+      <MainHeader title="대시보드" />
       <div className="h-full w-full pb-20 pt-3 overflow-y-auto scrollbar-hidden flex flex-col justify-center">
         <div className="bg-navy-700 border border-navy-700 h-fit p-4 rounded-lg flex flex-col gap-3">
           <div className="flex flex-row items-center justify-between text-center ">
-            <div className="border-r-2 border-navy-600 w-full flex flex-col py-2">
-              <h4 className="title4 text-navy-100">
-                {data.cleared_quest_count}개
-              </h4>
-              <span className="body3 text-sky_blue-500">완료 퀘스트</span>
-            </div>
-            <div className="border-r-2 border-navy-600 w-full flex flex-col py-2">
-              <h4 className="title4 text-navy-100">
-                {data.total_cleared_day}일
-              </h4>
-              <span className="body3 text-sky_blue-500">누적 완료일</span>
-            </div>
-            <div className="w-full flex flex-col py-2">
-              <h4 className="title4 text-navy-100">Lv {data.level}</h4>
-              <span className="body3 text-sky_blue-500">My 레벨</span>
-            </div>
+            <StatCard
+              stat={`${data.cleared_quest_count}개`}
+              label="완료 퀘스트"
+              borderRight
+            />
+            <StatCard
+              stat={`${data.total_cleared_day}일`}
+              label="누적 완료일"
+              borderRight
+            />
+            <StatCard stat={`Lv ${data.level}`} label="My 레벨" />
           </div>
 
-          <div className="bg-navy-800 flex flex-col items-center py-7 px-6 gap-6 rounded-lg">
-            <h4 className="title4 text-navy-100 text-center">
-              최근 일주일간{" "}
-              <span className="text-point_color-mint">
-                평균 {showingAvgQuest}건
-              </span>{" "}
-              의 <br />
-              퀘스트를 달성했어요.
-            </h4>
-            <img src={graphImg} />
-          </div>
-
-          <div className="bg-navy-800 flex flex-col items-center rounded-lg px-6 pt-7 gap-1">
-            <h4 className="title4 text-navy-100">
-              최근 일주일간{" "}
-              <span className="text-point_color-mint">
-                {data.daily_check_count}번
-              </span>{" "}
-              출석했어요.
-            </h4>
-            <img src={winkPolarImg} />
-          </div>
+          <WeeklyActivity
+            highlight={`평균 ${showingAvgQuest}건`}
+            tailText={
+              <>
+                의 <br />
+                퀘스트를 달성했어요.
+              </>
+            }
+            img={graphImg}
+            imgDescription="최근 일주일간 일별 퀘스트 달성 개수를 보여주는 차트"
+            gapClass="gap-6"
+          />
+          <WeeklyActivity
+            highlight={`${data.daily_check_count}번`}
+            tailText="출석했어요."
+            img={winkPolarImg}
+            imgDescription="윙크하는 북금곰 캐릭터"
+            gapClass="gap-1"
+          />
         </div>
       </div>
     </MainPageLayout>
