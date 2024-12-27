@@ -15,7 +15,7 @@ import GuidePage from "./pages/onboarding/GuidePage";
 import MainNavigationLayout from "./components/layout/MainNavigationLayout";
 import HomePage from "./pages/main/HomePage";
 import RankingPage from "./pages/main/RankingPage";
-import DashboardPage from "./pages/main/DashBoardPage";
+import DashboardPage from "./pages/main/DashboardPage";
 import CommunityPage from "./pages/main/CommunityPage";
 import CategorySortRedirect from "./components/layout/CategorySortRedirect";
 

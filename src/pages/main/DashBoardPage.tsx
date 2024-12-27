@@ -1,13 +1,12 @@
-import { FC } from "react";
-
 import graphImg from "../../assets/images/dashboard/graph.svg";
 import winkPolarImg from "../../assets/images/dashboard/wink-polar.svg";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import { fetchDashboardInfo } from "../../utils/api";
 import { useQuery } from "@tanstack/react-query";
 import MainHeader from "../../components/layout/MainHeader";
+import StatCard from "../../components/dashboard/StatCard";
 
-const DashboardPage: FC = () => {
+const DashboardPage = () => {
   const { data } = useQuery({
     queryFn: fetchDashboardInfo,
     queryKey: ["dashboard"],
@@ -28,22 +27,17 @@ const DashboardPage: FC = () => {
       <div className="h-full w-full pb-20 pt-3 overflow-y-auto scrollbar-hidden flex flex-col justify-center">
         <div className="bg-navy-700 border border-navy-700 h-fit p-4 rounded-lg flex flex-col gap-3">
           <div className="flex flex-row items-center justify-between text-center ">
-            <div className="border-r-2 border-navy-600 w-full flex flex-col py-2">
-              <h4 className="title4 text-navy-100">
-                {data.cleared_quest_count}개
-              </h4>
-              <span className="body3 text-sky_blue-500">완료 퀘스트</span>
-            </div>
-            <div className="border-r-2 border-navy-600 w-full flex flex-col py-2">
-              <h4 className="title4 text-navy-100">
-                {data.total_cleared_day}일
-              </h4>
-              <span className="body3 text-sky_blue-500">누적 완료일</span>
-            </div>
-            <div className="w-full flex flex-col py-2">
-              <h4 className="title4 text-navy-100">Lv {data.level}</h4>
-              <span className="body3 text-sky_blue-500">My 레벨</span>
-            </div>
+            <StatCard
+              stat={`${data.cleared_quest_count}개`}
+              label="완료 퀘스트"
+              borderRight
+            />
+            <StatCard
+              stat={`${data.total_cleared_day}일`}
+              label="누적 완료일"
+              borderRight
+            />
+            <StatCard stat={`Lv ${data.level}`} label="My 레벨" />
           </div>
 
           <div className="bg-navy-800 flex flex-col items-center py-7 px-6 gap-6 rounded-lg">
