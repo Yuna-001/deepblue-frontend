@@ -13,7 +13,7 @@ const MainNavButton: FC<{
         <div className="flex flex-col h-full items-center justify-end gap-[2px]">
           <img
             src={isActive ? activeImg : inactiveImg}
-            alt={text}
+            alt=""
             width={28}
             height={28}
           />
