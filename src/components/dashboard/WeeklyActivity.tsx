@@ -19,10 +19,10 @@ const WeeklyActivity: FC<WeeklyActivityProps> = ({
     <div
       className={`bg-navy-800 flex flex-col items-center rounded-lg px-6 pt-7 ${gapClass}`}
     >
-      <h3 className="title4 text-navy-100 text-center">
+      <h2 className="title4 text-navy-100 text-center">
         최근 일주일간 <span className="text-point_color-mint">{highlight}</span>{" "}
         {tailText}
-      </h3>
+      </h2>
       <img src={img} alt={imgDescription} />
     </div>
   );

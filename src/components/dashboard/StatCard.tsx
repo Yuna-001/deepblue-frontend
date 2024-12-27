@@ -15,7 +15,7 @@ const StatCard: FC<StatCardProps> = ({ stat, label, borderRight }) => {
 
   return (
     <div className={classes}>
-      <h3 className="title4 text-navy-100">{stat}</h3>
+      <h2 className="title4 text-navy-100">{stat}</h2>
       <span className="body3 text-sky_blue-500">{label}</span>
     </div>
   );
