@@ -27,11 +27,9 @@ const NicknameSettingPage: FC = () => {
     // 초기 상태
     inputFieldClasses += "border-navy-700";
   } else if (disabled) {
-    // 불통
     inputFieldClasses += "border-error_color";
     messageClasses += "text-error_color";
   } else {
-    // 통과
     inputFieldClasses += "border-point_color-mint";
     messageClasses += "text-point_color-mint";
   }

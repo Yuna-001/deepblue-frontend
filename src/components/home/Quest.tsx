@@ -22,10 +22,8 @@ const Quest: FC<{
     "h-24 w-full rounded-lg flex flex-col justify-between py-5 px-6 ";
 
   if (isCompleted) {
-    //비활성
     classes += "bg-navy-800 text-navy-500 border border-navy-700";
   } else {
-    //활성
     classes += "bg-navy-700 text-navy-100";
   }
 

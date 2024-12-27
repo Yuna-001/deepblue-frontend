@@ -22,13 +22,10 @@ const Button: FC<ButtonProps> = ({
   }
 
   if (isLoginButton) {
-    // 로그인 버튼인 경우
     classes += "bg-navy-100 text-navy-800";
   } else if (!disabled) {
-    // 활성 상태일 경우
     classes += "bg-gradient-custom text-navy-800";
   } else {
-    // 비활성 상태일 경우
     classes += "bg-navy-700 text-navy-500";
   }
 

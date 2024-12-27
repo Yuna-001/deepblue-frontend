@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchUserInfo } from "../../utils/api";
 
 const TotalPoint: FC = () => {
-  // 백엔드에서 유저 총 포인트 받기
   const { data: userInfo } = useQuery({
     queryFn: fetchUserInfo,
     queryKey: ["userInfo"],
