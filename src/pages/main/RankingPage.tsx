@@ -14,7 +14,7 @@ import UserTopPercentInfo from "../../components/ranking/UserTopPercentInfo";
 const RankingPage: FC = () => {
   const navigate = useNavigate();
 
-  const { data: rankers = [] } = useQuery({
+  const { data: players = [] } = useQuery({
     queryFn: fetchRanking,
     queryKey: ["ranking"],
   });
@@ -29,8 +29,8 @@ const RankingPage: FC = () => {
     queryKey: ["quests"],
   });
 
-  const userTopPercent = rankers.find(
-    (ranker) => ranker.nickname === user?.nickname,
+  const userTopPercent = players.find(
+    (player) => player.nickname === user?.nickname,
   )?.top_percent;
   const showingUserTopPercent: number = Math.round(Number(userTopPercent || 0));
 
@@ -64,7 +64,7 @@ const RankingPage: FC = () => {
           {isAllClear ? "새로운 퀘스트 생성 중" : "남은 퀘스트 하러 가기"}
         </Button>
 
-        <RankingList rankers={rankers} />
+        <RankingList players={players} />
       </div>
     </MainPageLayout>
   );
