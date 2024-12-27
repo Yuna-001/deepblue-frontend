@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQueries } from "@tanstack/react-query";
 
 import { fetchQuests, fetchRanking, fetchUserInfo } from "../../utils/api";
 import Button from "../../components/buttons/Button";
@@ -14,20 +14,23 @@ import StarBadge from "../../components/ranking/StarBadge";
 const RankingPage: FC = () => {
   const navigate = useNavigate();
 
-  const { data: players = [] } = useQuery({
-    queryFn: fetchRanking,
-    queryKey: ["ranking"],
+  const datas = useQueries({
+    queries: [
+      { queryFn: fetchRanking, queryKey: ["ranking"] },
+      {
+        queryFn: fetchUserInfo,
+        queryKey: ["userInfo"],
+      },
+      {
+        queryFn: fetchQuests,
+        queryKey: ["quests"],
+      },
+    ],
   });
 
-  const { data: user } = useQuery({
-    queryFn: fetchUserInfo,
-    queryKey: ["userInfo"],
-  });
-
-  const { data: quests } = useQuery({
-    queryFn: fetchQuests,
-    queryKey: ["quests"],
-  });
+  const players = datas[0].data ?? [];
+  const user = datas[1].data;
+  const quests = datas[2].data;
 
   const userTopPercent = players.find(
     (player) => player.nickname === user?.nickname,
