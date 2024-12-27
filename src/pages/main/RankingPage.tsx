@@ -9,6 +9,7 @@ import roundPolarLogo from "../../assets/images/rank/round-polar-logo.svg";
 import starImg from "../../assets/images/rank/star.svg";
 import RankingList from "../../components/ranking/RankingList";
 import MainHeader from "../../components/layout/MainHeader";
+import UserTopPercentInfo from "../../components/ranking/UserTopPercentInfo";
 
 const RankingPage: FC = () => {
   const navigate = useNavigate();
@@ -31,8 +32,8 @@ const RankingPage: FC = () => {
   const userTopPercent = rankers.find(
     (ranker) => ranker.nickname === user?.nickname,
   )?.top_percent;
-
   const showingUserTopPercent: number = Math.round(Number(userTopPercent || 0));
+
   const isVisibleStar: boolean = showingUserTopPercent <= 30;
   const isAllClear: boolean =
     quests?.every(({ is_cleared }) => is_cleared === true) ?? false;
@@ -45,11 +46,7 @@ const RankingPage: FC = () => {
     <MainPageLayout>
       <MainHeader title="랭킹" />
       <div className="w-full flex flex-col items-center gap-7 h-full pb-14">
-        <h2 className="title3 text-navy-100">
-          현재까지 상위{" "}
-          <span className="text-sky_blue-500">{showingUserTopPercent}%</span>{" "}
-          에요
-        </h2>
+        <UserTopPercentInfo topPercent={showingUserTopPercent} />
         <div className="relative">
           <img
             src={roundPolarLogo}
