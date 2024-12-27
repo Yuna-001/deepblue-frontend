@@ -5,6 +5,7 @@ import { fetchDashboardInfo } from "../../utils/api";
 import { useQuery } from "@tanstack/react-query";
 import MainHeader from "../../components/layout/MainHeader";
 import StatCard from "../../components/dashboard/StatCard";
+import WeeklyActivity from "../../components/dashboard/WeeklyActivity";
 
 const DashboardPage = () => {
   const { data } = useQuery({
@@ -40,28 +41,25 @@ const DashboardPage = () => {
             <StatCard stat={`Lv ${data.level}`} label="My 레벨" />
           </div>
 
-          <div className="bg-navy-800 flex flex-col items-center py-7 px-6 gap-6 rounded-lg">
-            <h4 className="title4 text-navy-100 text-center">
-              최근 일주일간{" "}
-              <span className="text-point_color-mint">
-                평균 {showingAvgQuest}건
-              </span>{" "}
-              의 <br />
-              퀘스트를 달성했어요.
-            </h4>
-            <img src={graphImg} />
-          </div>
-
-          <div className="bg-navy-800 flex flex-col items-center rounded-lg px-6 pt-7 gap-1">
-            <h4 className="title4 text-navy-100">
-              최근 일주일간{" "}
-              <span className="text-point_color-mint">
-                {data.daily_check_count}번
-              </span>{" "}
-              출석했어요.
-            </h4>
-            <img src={winkPolarImg} />
-          </div>
+          <WeeklyActivity
+            highlight={`평균 ${showingAvgQuest}건`}
+            tailText={
+              <>
+                의 <br />
+                퀘스트를 달성했어요.
+              </>
+            }
+            img={graphImg}
+            imgDescription="최근 일주일간 일별 퀘스트 달성 개수를 보여주는 차트"
+            gapClass="gap-6"
+          />
+          <WeeklyActivity
+            highlight={`${data.daily_check_count}번`}
+            tailText="출석했어요."
+            img={winkPolarImg}
+            imgDescription="윙크하는 북금곰 캐릭터"
+            gapClass="gap-1"
+          />
         </div>
       </div>
     </MainPageLayout>
