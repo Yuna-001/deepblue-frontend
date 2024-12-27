@@ -6,10 +6,10 @@ import { fetchQuests, fetchRanking, fetchUserInfo } from "../../utils/api";
 import Button from "../../components/buttons/Button";
 import MainPageLayout from "../../components/layout/MainPageLayout";
 import roundPolarLogo from "../../assets/images/rank/round-polar-logo.svg";
-import starImg from "../../assets/images/rank/star.svg";
 import RankingList from "../../components/ranking/RankingList";
 import MainHeader from "../../components/layout/MainHeader";
 import UserTopPercentInfo from "../../components/ranking/UserTopPercentInfo";
+import StarBadge from "../../components/ranking/StarBadge";
 
 const RankingPage: FC = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const RankingPage: FC = () => {
   )?.top_percent;
   const showingUserTopPercent: number = Math.round(Number(userTopPercent || 0));
 
-  const isVisibleStar: boolean = showingUserTopPercent <= 30;
+  const isTop30Percent: boolean = showingUserTopPercent <= 30;
   const isAllClear: boolean =
     quests?.every(({ is_cleared }) => is_cleared === true) ?? false;
 
@@ -53,17 +53,11 @@ const RankingPage: FC = () => {
             alt="딥블루 캐릭터 로고"
             className="-z-10"
           />
-          {isVisibleStar && (
-            <>
-              <img src={starImg} alt="별" className="absolute top-2 right-0" />
-              <img src={starImg} alt="별" className="absolute top-7 -right-4" />
-            </>
-          )}
+          <StarBadge isVisible={isTop30Percent} />
         </div>
         <Button onClick={handleGoHome} disabled={isAllClear}>
           {isAllClear ? "새로운 퀘스트 생성 중" : "남은 퀘스트 하러 가기"}
         </Button>
-
         <RankingList players={players} />
       </div>
     </MainPageLayout>
