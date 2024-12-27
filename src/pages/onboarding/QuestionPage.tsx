@@ -12,7 +12,6 @@ import useSurveyScoreStore from "../../store/surveyScore";
 
 const IMAGE_LIST = [question1Img, question2Img, question3Img];
 
-// 뒤로 가기하면 점수를 리셋시키거나 필요한 만큼 빼는 로직 필요
 const QuestionPage: FC = () => {
   const navigate = useNavigate();
   const { questionIndex } = useParams();

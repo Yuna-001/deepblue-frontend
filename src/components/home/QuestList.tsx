@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchQuests } from "../../utils/api";
 
 const QusetList: FC = () => {
-  // 백엔드에서 유저 맞춤 퀘스트 받기
   const { data: quests } = useQuery({
     queryFn: fetchQuests,
     queryKey: ["quests"],

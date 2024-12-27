@@ -24,12 +24,10 @@ const RemainingTime: FC = () => {
   const [timeRemaining, setTimeRemaining] = useState<string>("");
 
   useEffect(() => {
-    // 1초마다 타이머 업데이트
     const timerId = setInterval(() => {
       setTimeRemaining(calculateTimeRemaining());
     }, 1000);
 
-    // 컴포넌트 언마운트 시 인터벌 클리어
     return () => clearInterval(timerId);
   }, []);
 

@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-
-  // width, height 관련은 나중에 수정 필요
   theme: {
     extend: {
       fontFamily: {

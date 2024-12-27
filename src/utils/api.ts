@@ -23,7 +23,6 @@ export const checkIsDuplicatedNickname = async (nickname: string) => {
   return res.data;
 };
 
-// OK
 export const submitUserInfo = async ({
   surveyLevel,
   nickname,
@@ -45,7 +44,6 @@ export const submitUserInfo = async ({
 
 /* 홈 */
 
-// 퀘스트리스트 초기화를 언제해야 하는지 논의 필요
 export const resetQuests = async () => {
   const token = getToken();
 
@@ -78,7 +76,6 @@ export const submitDailyCheck = async () => {
   return res.data;
 };
 
-// OK
 export const fetchQuests = async () => {
   const token = getToken();
 
@@ -91,7 +88,6 @@ export const fetchQuests = async () => {
   return res.data as Array<QuestType>;
 };
 
-// OK
 export const fetchUserInfo = async () => {
   const token = getToken();
 
@@ -106,7 +102,6 @@ export const fetchUserInfo = async () => {
 
 /* 랭킹 */
 
-// OK
 export const fetchRanking = async () => {
   const token = getToken();
   const res = await axios.get("https://api.diver-deepblue.app/ranking/", {
@@ -120,7 +115,6 @@ export const fetchRanking = async () => {
 
 /* 대시보드 */
 
-// OK
 export const fetchDashboardInfo = async () => {
   const token = getToken();
 
@@ -135,7 +129,6 @@ export const fetchDashboardInfo = async () => {
 
 /* 커뮤니티 */
 
-// OK
 export const fetchPosts = async (
   category: string | undefined,
   type: string | undefined,
