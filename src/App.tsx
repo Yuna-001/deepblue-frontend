@@ -17,7 +17,7 @@ import HomePage from "./pages/main/HomePage";
 import RankingPage from "./pages/main/RankingPage";
 import DashboardPage from "./pages/main/DashBoardPage";
 import CommunityPage from "./pages/main/CommunityPage";
-import CommunityCategoryRedirect from "./pages/main/CommunityCategoryRedirect";
+import CategorySortRedirect from "./components/layout/CategorySortRedirect";
 
 import { queryClient } from "./utils/api";
 
@@ -58,18 +58,9 @@ function App() {
             { path: "home", element: <HomePage /> },
             {
               path: "communication",
+              element: <CategorySortRedirect />,
               children: [
-                {
-                  index: true,
-                  element: <Navigate to="/main/communication/all/realtime" />,
-                },
-                {
-                  path: ":category",
-                  children: [
-                    { index: true, element: <CommunityCategoryRedirect /> },
-                    { path: ":sort", element: <CommunityPage /> },
-                  ],
-                },
+                { path: ":category/:sort", element: <CommunityPage /> },
               ],
             },
             { path: "ranking", element: <RankingPage /> },
